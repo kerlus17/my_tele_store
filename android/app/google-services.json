@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "640869714625",
+    "project_id": "tele-5d291",
+    "storage_bucket": "tele-5d291.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:640869714625:android:8502fe9dc75c54b0ada240",
+        "android_client_info": {
+          "package_name": "com.example.tele_store"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDYp5J1zQLx2dhSLtn5fW4BM674UDW1FiU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
