@@ -30,23 +30,53 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
+
+  flutter_localizations: 
+    sdk: flutter
   
-  
+
+  #dart run build_runner build --delete-conflicting-outputs
+  animate_do: ^5.1.0
   connectivity_plus: ^7.3.1
   flutter_dotenv: ^6.0.1
   flutter_screenutil: ^5.9.3
+  flutter_native_splash: 2.4.0
+  flutter_bloc: ^9.1.1
+  shared_preferences: ^2.5.5
+  get_it: ^9.2.1
   
 
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^1.0.8
   firebase_core: ^4.14.0
+  freezed_annotation: ^3.1.0
+  dio: ^5.11.1
+  pretty_dio_logger: ^1.4.0
+  retrofit: ^4.10.0
+  retrofit_generator: ^10.2.9
+  json_annotation: ^4.12.0
+  fluttertoast: ^9.1.0
+  image_picker: ^1.2.3
+  permission_handler: ^13.0.2
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
   very_good_analysis: 10.2.0
   flutter_launcher_icons: ^0.14.4
+  build_runner: ^2.15.1
+  freezed: ^3.2.5
+  json_serializable: ^6.14.1
+
+flutter_icons:
+  andriod: true
+  ios: true
+  image_pass: "assets/icons/app_icon.jpg"
+  adaptive_icon_background: "#ffffff"
+  adaptive_icon_foreground: "assets/icons/play_store_512.png"
+
+
 
 
   # The "flutter_lints" package below contains a set of recommended lints to
@@ -71,7 +101,12 @@ flutter:
   assets:
     - .env.dev
     - .env.prod
-    - assets/
+    - lang/ar.json
+    - lang/en.json
+    - assets/images/core/
+    - assets/images/admin/
+    - assets/images/customer/
+    - assets/svg/
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/to/resolution-aware-images
@@ -84,17 +119,26 @@ flutter:
   # "family" key with the font family name, and a "fonts" key with a
   # list giving the asset and other descriptors for the font. For
   # example:
-  # fonts:
-  #   - family: Schyler
-  #     fonts:
-  #       - asset: fonts/Schyler-Regular.ttf
-  #       - asset: fonts/Schyler-Italic.ttf
-  #         style: italic
-  #   - family: Trajan Pro
-  #     fonts:
-  #       - asset: fonts/TrajanPro.ttf
-  #       - asset: fonts/TrajanPro_Bold.ttf
-  #         weight: 700
-  #
+  fonts:
+    - family: cairo
+      fonts:
+        - asset: assets/fonts/arabic/cairo/Cairo-Bold.ttf
+          weight: 700
+        - asset: assets/fonts/arabic/cairo/Cairo-Medium.ttf
+          weight: 500
+        - asset: assets/fonts/arabic/cairo/Cairo-Regular.ttf
+          weight: 400
+        
+    - family: poppins 
+      fonts:
+        - asset: assets/fonts/english/poppins/Poppins-Bold.ttf
+          weight: 700
+        - asset: assets/fonts/english/poppins/Poppins-Medium.ttf
+          weight: 500
+        - asset: assets/fonts/english/poppins/Poppins-Regular.ttf
+          weight: 400
+  
+
+  
   # For details regarding fonts from package dependencies,
   # see https://flutter.dev/to/font-from-package

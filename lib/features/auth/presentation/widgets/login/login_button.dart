@@ -1,0 +1,87 @@
+import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:tele_store/core/common/animation/animate_do.dart';
+import 'package:tele_store/core/common/toast/show_toast.dart';
+import 'package:tele_store/core/common/widgets/custom_linear_button.dart';
+import 'package:tele_store/core/common/widgets/custom_text.dart';
+import 'package:tele_store/core/extentions/context_extension.dart';
+import 'package:tele_store/core/routes/app_routes.dart';
+import 'package:tele_store/core/style/fonts/font_weight_helper.dart';
+import 'package:tele_store/features/auth/presentation/bloc/bloc/auth_bloc.dart';
+import 'package:tele_store/language/lang_keys.dart';
+
+class LoginButton extends StatelessWidget {
+  const LoginButton({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return BlocConsumer<AuthBloc, AuthState>(
+      listener: (context, state) {
+        state.whenOrNull(
+          success: (userRole) {
+            ShowToast.showToastSuccessTop(
+              context: context,
+              message: context.translate(LangKeys.loggedSuccessfully),
+            );
+            if (userRole == 'admin') {
+              context.pushNamedAndRemoveUntil(AppRoutes.homeAdmin);
+            } else {
+              context.pushNamedAndRemoveUntil(AppRoutes.homeCustomer);
+            }
+          },
+          error: (error) {
+            ShowToast.showToastErrorTop(
+              context: context,
+              message: context.translate(error),
+            );
+          },
+        );
+      },
+      builder: (BuildContext context, AuthState state) {
+        return state.maybeWhen(
+          loading: () {
+            return CustomFadeInRight(
+              duration: 600,
+              child: CustomLinearButton(
+                onPressed: () {},
+                height: 50.h,
+                width: double.infinity,
+                child: CircularProgressIndicator(
+                  color: Colors.white,
+                ),
+              ),
+            );
+          },
+          orElse: () {
+            return CustomFadeInRight(
+              duration: 600,
+              child: CustomLinearButton(
+                onPressed: () {
+                  if (context
+                      .read<AuthBloc>()
+                      .formkey
+                      .currentState!
+                      .validate()) {
+                    context.read<AuthBloc>().add(
+                      const AuthEvent.login(),
+                    );
+                  }
+                },
+                height: 50.h,
+                width: double.infinity,
+                child: TextApp(
+                  text: context.translate(LangKeys.login),
+                  theme: context.textStyle.copyWith(
+                    fontSize: 18.sp,
+                    fontWeight: FontWeightHelper.bold,
+                  ),
+                ), // TextApp
+              ), // CustomLinearButton
+            );
+          },
+        );
+      },
+    );
+  }
+}

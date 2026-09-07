@@ -10,9 +10,9 @@ class NoNetWorkScreen extends StatelessWidget {
       child: Scaffold(
         body: Container(
           constraints: const BoxConstraints.expand(),
-          decoration: BoxDecoration(
+          decoration: const BoxDecoration(
             image: DecorationImage(
-              image: AssetImage(AppImages.nonetwork),
+              image: AssetImage(AppImages.noNetwork),
               fit: BoxFit.fill
             ), // DecorationImage
           ), // BoxDecoration
