@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:tele_store/core/app/upload_image/cubit/cubit/upload_image_cubit.dart';
 import 'package:tele_store/core/common/screens/underbuild_screen.dart';
 import 'package:tele_store/core/di/injection_container.dart';
 import 'package:tele_store/core/routes/base_route.dart';
@@ -26,7 +27,9 @@ class AppRoutes {
           ),
         );
       case signup:
-        return BaseRoute(page: const SignupScreen());
+        return BaseRoute(page: MultiBlocProvider(providers: [
+         BlocProvider(create:(context)=>sl<UploadImageCubit>())
+        ],child: const SignupScreen()));
       case homeAdmin:
         return BaseRoute(page: const HomeAdmin());
       case homeCustomer:
