@@ -27,14 +27,19 @@ class AppRoutes {
           ),
         );
       case signup:
-        return BaseRoute(page: MultiBlocProvider(providers: [
-         BlocProvider(create:(context)=>sl<UploadImageCubit>())
-        ],child: const SignupScreen()));
+        return BaseRoute(
+          page: MultiBlocProvider(
+            providers: [
+              BlocProvider(create: (context) => sl<UploadImageCubit>()),
+              BlocProvider(create: (context) => sl<AuthBloc>()),
+            ],
+            child: const SignupScreen(),
+          ),
+        );
       case homeAdmin:
         return BaseRoute(page: const HomeAdmin());
       case homeCustomer:
         return BaseRoute(page: const HomeCustomer());
-
 
       default:
         return BaseRoute(page: const PageUnderBuildScreen());

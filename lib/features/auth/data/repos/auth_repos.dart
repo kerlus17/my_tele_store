@@ -3,14 +3,14 @@ import 'package:tele_store/core/utils/app_strings.dart';
 import 'package:tele_store/features/auth/data/data_source/auth_data_source.dart';
 import 'package:tele_store/features/auth/data/models/auth_login_response.dart';
 import 'package:tele_store/features/auth/data/models/login_request_body.dart';
+import 'package:tele_store/features/auth/data/models/sign_up_request.dart';
+import 'package:tele_store/features/auth/data/models/sign_up_response.dart';
 import 'package:tele_store/features/auth/data/models/user_role_response.dart';
 import 'package:tele_store/language/lang_keys.dart';
 
 class AuthRepos {
   const AuthRepos(this._dataSource);
   final AuthDataSource _dataSource;
-
-  //Loign
 
   Future<ApiResult<LoginResponse>> login(LoginRequestBody body) async {
     try {
@@ -26,5 +26,15 @@ class AuthRepos {
     final response = await _dataSource.userRole(token);
 
     return response;
+  }
+
+  Future<ApiResult<SignUpResponse>> signUp(SignUpRequestBody body) async {
+    try {
+      final response = await _dataSource.SignUp(body: body);
+
+      return ApiResult.success(response);
+    } catch (error) {
+      return const ApiResult.failure("please try again we have error");
+    }
   }
 }
