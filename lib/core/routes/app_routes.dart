@@ -4,7 +4,7 @@ import 'package:tele_store/core/app/upload_image/cubit/cubit/upload_image_cubit.
 import 'package:tele_store/core/common/screens/underbuild_screen.dart';
 import 'package:tele_store/core/di/injection_container.dart';
 import 'package:tele_store/core/routes/base_route.dart';
-import 'package:tele_store/features/admin/home_admin.dart';
+import 'package:tele_store/features/admin/home_admin/presentation/screens/home_admin_screen.dart';
 import 'package:tele_store/features/auth/presentation/bloc/bloc/auth_bloc.dart';
 import 'package:tele_store/features/auth/presentation/screens/login_screen.dart';
 import 'package:tele_store/features/auth/presentation/screens/signup_screen.dart';
