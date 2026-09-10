@@ -1,6 +1,9 @@
 import 'package:dio/dio.dart';
 import 'package:retrofit/retrofit.dart';
 import 'package:tele_store/core/app/upload_image/model/upload_image_response.dart';
+import 'package:tele_store/features/admin/dashBoard/data/models/categories_number_response.dart';
+import 'package:tele_store/features/admin/dashBoard/data/models/products_number_response.dart';
+import 'package:tele_store/features/admin/dashBoard/data/models/users_number_response.dart';
 import 'package:tele_store/features/auth/data/models/auth_login_response.dart';
 import 'package:tele_store/features/auth/data/models/sign_up_response.dart';
 import 'package:tele_store/features/auth/data/models/user_role_response.dart';
@@ -19,6 +22,11 @@ abstract class ApiService {
     @Body() Map<String, dynamic> mutaion,
   );
 
+  @POST(graphql)
+  Future<SignUpResponse> signUp(
+    @Body() Map<String, dynamic> mutation,
+  );
+
   @GET('/api/v1/auth/profile')
   Future<UserRoleResponse> userRole();
 
@@ -26,9 +34,17 @@ abstract class ApiService {
   Future<UploadImageResponse> uploadImage(@Body() FormData file);
 
   @POST(graphql)
-Future<SignUpResponse> signUp(
-  @Body() Map<String, dynamic> mutation,
-);
+  Future<ProductsNumberResponse> numberOfProducts(
+    @Body() Map<String, dynamic> Query,
+  );
 
+  @POST(graphql)
+  Future<CategoriesNumberResponse> numberOfCategories(
+    @Body() Map<String, dynamic> Query,
+  );
 
+  @POST(graphql)
+  Future<UsersNumberResponse> numberOfUsers(
+    @Body() Map<String, dynamic> Query,
+  );
 }

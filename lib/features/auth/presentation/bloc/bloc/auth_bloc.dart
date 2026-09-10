@@ -87,4 +87,12 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
       },
     );
   }
+
+  @override
+  Future<void> close() {
+    emailController.dispose();
+    passwordController.dispose();
+    nameController.dispose();
+    return super.close();
+  }
 }

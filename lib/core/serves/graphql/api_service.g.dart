@@ -50,6 +50,34 @@ class _ApiService implements ApiService {
   }
 
   @override
+  Future<SignUpResponse> signUp(Map<String, dynamic> mutation) async {
+    final _extra = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{};
+    final _headers = <String, dynamic>{};
+    final _data = <String, dynamic>{};
+    _data.addAll(mutation);
+    final _options = _setStreamType<SignUpResponse>(
+      Options(method: 'POST', headers: _headers, extra: _extra)
+          .compose(
+            _dio.options,
+            '/graphql',
+            queryParameters: queryParameters,
+            data: _data,
+          )
+          .copyWith(baseUrl: _combineBaseUrls(_dio.options.baseUrl, baseUrl)),
+    );
+    final _result = await _dio.fetch<Map<String, dynamic>>(_options);
+    late SignUpResponse _value;
+    try {
+      _value = SignUpResponse.fromJson(_result.data!);
+    } on Object catch (e, s) {
+      errorLogger?.logError(e, s, _options, response: _result);
+      rethrow;
+    }
+    return _value;
+  }
+
+  @override
   Future<UserRoleResponse> userRole() async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
@@ -104,13 +132,15 @@ class _ApiService implements ApiService {
   }
 
   @override
-  Future<SignUpResponse> signUp(Map<String, dynamic> mutation) async {
+  Future<ProductsNumberResponse> numberOfProducts(
+    Map<String, dynamic> Query,
+  ) async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
     final _data = <String, dynamic>{};
-    _data.addAll(mutation);
-    final _options = _setStreamType<SignUpResponse>(
+    _data.addAll(Query);
+    final _options = _setStreamType<ProductsNumberResponse>(
       Options(method: 'POST', headers: _headers, extra: _extra)
           .compose(
             _dio.options,
@@ -121,9 +151,67 @@ class _ApiService implements ApiService {
           .copyWith(baseUrl: _combineBaseUrls(_dio.options.baseUrl, baseUrl)),
     );
     final _result = await _dio.fetch<Map<String, dynamic>>(_options);
-    late SignUpResponse _value;
+    late ProductsNumberResponse _value;
     try {
-      _value = SignUpResponse.fromJson(_result.data!);
+      _value = ProductsNumberResponse.fromJson(_result.data!);
+    } on Object catch (e, s) {
+      errorLogger?.logError(e, s, _options, response: _result);
+      rethrow;
+    }
+    return _value;
+  }
+
+  @override
+  Future<CategoriesNumberResponse> numberOfCategories(
+    Map<String, dynamic> Query,
+  ) async {
+    final _extra = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{};
+    final _headers = <String, dynamic>{};
+    final _data = <String, dynamic>{};
+    _data.addAll(Query);
+    final _options = _setStreamType<CategoriesNumberResponse>(
+      Options(method: 'POST', headers: _headers, extra: _extra)
+          .compose(
+            _dio.options,
+            '/graphql',
+            queryParameters: queryParameters,
+            data: _data,
+          )
+          .copyWith(baseUrl: _combineBaseUrls(_dio.options.baseUrl, baseUrl)),
+    );
+    final _result = await _dio.fetch<Map<String, dynamic>>(_options);
+    late CategoriesNumberResponse _value;
+    try {
+      _value = CategoriesNumberResponse.fromJson(_result.data!);
+    } on Object catch (e, s) {
+      errorLogger?.logError(e, s, _options, response: _result);
+      rethrow;
+    }
+    return _value;
+  }
+
+  @override
+  Future<UsersNumberResponse> numberOfUsers(Map<String, dynamic> Query) async {
+    final _extra = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{};
+    final _headers = <String, dynamic>{};
+    final _data = <String, dynamic>{};
+    _data.addAll(Query);
+    final _options = _setStreamType<UsersNumberResponse>(
+      Options(method: 'POST', headers: _headers, extra: _extra)
+          .compose(
+            _dio.options,
+            '/graphql',
+            queryParameters: queryParameters,
+            data: _data,
+          )
+          .copyWith(baseUrl: _combineBaseUrls(_dio.options.baseUrl, baseUrl)),
+    );
+    final _result = await _dio.fetch<Map<String, dynamic>>(_options);
+    late UsersNumberResponse _value;
+    try {
+      _value = UsersNumberResponse.fromJson(_result.data!);
     } on Object catch (e, s) {
       errorLogger?.logError(e, s, _options, response: _result);
       rethrow;
