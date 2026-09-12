@@ -7,6 +7,13 @@ import 'package:tele_store/core/app/upload_image/dataSource/upload_image_data_so
 import 'package:tele_store/core/app/upload_image/repos/upload_image_repo.dart';
 import 'package:tele_store/core/serves/graphql/api_service.dart';
 import 'package:tele_store/core/serves/graphql/dio_factory.dart';
+import 'package:tele_store/features/admin/add_categories/data/data_source/categories_admin_data_source.dart';
+import 'package:tele_store/features/admin/add_categories/data/repos/categories_admin_repo.dart';
+import 'package:tele_store/features/admin/add_categories/presentation/bloc/craete_category/create_category_bloc.dart';
+import 'package:tele_store/features/admin/add_categories/presentation/bloc/delete_category/delete_category_bloc.dart';
+import 'package:tele_store/features/admin/add_categories/presentation/bloc/get_all_admin_categories/get_all_admin_categories_bloc.dart';
+import 'package:tele_store/features/admin/add_categories/presentation/bloc/update_category/update_category_bloc.dart';
+import 'package:tele_store/features/admin/add_categories/presentation/widgets/create/create_category.dart';
 import 'package:tele_store/features/admin/dashBoard/data/data_source/dashBoard_data_source.dart';
 import 'package:tele_store/features/admin/dashBoard/data/repos/dashBoard_repo.dart';
 import 'package:tele_store/features/admin/dashBoard/presentation/bloc/Products_number/products_number_bloc.dart';
@@ -22,6 +29,7 @@ Future<void> setupInjection() async {
   await _initCore();
   await _initAuth();
   await _initDashBoard();
+  await _initCategoriesAdmin();
 }
 
 Future<void> _initCore() async {
@@ -50,4 +58,14 @@ Future<void> _initDashBoard() async {
     ..registerFactory(() => ProductsNumberBloc(sl()))
     ..registerFactory(() => CategoriesNumberBloc(sl()))
     ..registerFactory(() => UsersNumberBloc(sl()));
+}
+
+Future<void> _initCategoriesAdmin() async {
+  sl
+    ..registerLazySingleton(() => CategoriesAdminRepo(sl()))
+    ..registerLazySingleton(() => CategoriesAdminDataSource(sl()))
+    ..registerFactory(() => GetAllAdminCategoriesBloc(sl()))
+    ..registerFactory(() => CreateCategoryBloc(sl()))
+    ..registerFactory(() => DeleteCategoryBloc(sl()))
+    ..registerFactory(() => UpdateCategoryBloc(sl()));
 }

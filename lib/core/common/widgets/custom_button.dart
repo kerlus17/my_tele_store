@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:tele_store/core/common/widgets/custom_text.dart';
@@ -53,16 +52,22 @@ class CustomButton extends StatelessWidget {
           ),
         ),
         onPressed: onPressed,
-        child: TextApp(
-          theme: context.textStyle.copyWith(
-            color: textColor ?? Colors.white,
-            fontWeight: FontWeightHelper.medium,
-            fontFamily: FontFamilyHelper.poppinsEnglish,
-            fontSize: 16.sp,
-          ),
-          text: text,
-          textAlign: textAlign,
-        ),
+        child: isLoading
+            ? Center(
+                child: CircularProgressIndicator(
+                  color: textColor ?? Colors.white,
+                ),
+              )
+            : TextApp(
+                theme: context.textStyle.copyWith(
+                  color: textColor ?? Colors.white,
+                  fontWeight: FontWeightHelper.medium,
+                  fontFamily: FontFamilyHelper.poppinsEnglish,
+                  fontSize: 16.sp,
+                ),
+                text: text,
+                textAlign: textAlign,
+              ),
       ),
     );
   }

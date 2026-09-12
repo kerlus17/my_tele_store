@@ -1,5 +1,3 @@
-
-
 class AdminQuires {
   factory AdminQuires() {
     return _instance;

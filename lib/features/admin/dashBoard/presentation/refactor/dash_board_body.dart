@@ -75,7 +75,7 @@ class DashBoardBody extends StatelessWidget {
                   },
                   success: (number) {
                     return DashBoardContiner(
-                      image: AppImages.productsDrawer,
+                      image: AppImages.categoriesDrawer,
                       number: number,
                       title: 'categories',
                       isLoading: false,
@@ -107,7 +107,7 @@ class DashBoardBody extends StatelessWidget {
                   },
                   success: (number) {
                     return DashBoardContiner(
-                      image: AppImages.productsDrawer,
+                      image: AppImages.usersDrawer,
                       number: number,
                       title: 'Users',
                       isLoading: false,

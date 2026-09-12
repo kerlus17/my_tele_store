@@ -1,6 +1,9 @@
 import 'package:dio/dio.dart';
 import 'package:retrofit/retrofit.dart';
 import 'package:tele_store/core/app/upload_image/model/upload_image_response.dart';
+import 'package:tele_store/features/admin/add_categories/data/models/create_category_request_body.dart';
+import 'package:tele_store/features/admin/add_categories/data/models/create_category_response.dart';
+import 'package:tele_store/features/admin/add_categories/data/models/get_all_categories_response.dart';
 import 'package:tele_store/features/admin/dashBoard/data/models/categories_number_response.dart';
 import 'package:tele_store/features/admin/dashBoard/data/models/products_number_response.dart';
 import 'package:tele_store/features/admin/dashBoard/data/models/users_number_response.dart';
@@ -46,5 +49,25 @@ abstract class ApiService {
   @POST(graphql)
   Future<UsersNumberResponse> numberOfUsers(
     @Body() Map<String, dynamic> Query,
+  );
+
+  @POST(graphql)
+  Future<CategoriesGetAllResponse> grtAllCategories(
+    @Body() Map<String, dynamic> Query,
+  );
+
+  @POST('/api/v1/categories/')
+  Future<CreateCategoryResponse> createCategory(
+    @Body() CreateCategoryRequestBody body,
+  );
+
+  @POST(graphql)
+  Future<void> deleteCategory(
+    @Body() Map<String, dynamic> mutation,
+  );
+
+  @POST(graphql)
+  Future<void> UpdateCategory(
+    @Body() Map<String, dynamic> mutation,
   );
 }
