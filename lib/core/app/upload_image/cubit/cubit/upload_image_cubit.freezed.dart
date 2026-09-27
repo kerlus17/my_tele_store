@@ -11,332 +11,442 @@ part of 'upload_image_cubit.dart';
 
 // dart format off
 T _$identity<T>(T value) => value;
+
 /// @nodoc
 mixin _$UploadImageState {
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is UploadImageState);
+  }
 
+  @override
+  int get hashCode => runtimeType.hashCode;
 
-
-
-
-@override
-bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is UploadImageState);
-}
-
-
-@override
-int get hashCode => runtimeType.hashCode;
-
-@override
-String toString() {
-  return 'UploadImageState()';
-}
-
-
+  @override
+  String toString() {
+    return 'UploadImageState()';
+  }
 }
 
 /// @nodoc
-class $UploadImageStateCopyWith<$Res>  {
-$UploadImageStateCopyWith(UploadImageState _, $Res Function(UploadImageState) __);
+class $UploadImageStateCopyWith<$Res> {
+  $UploadImageStateCopyWith(
+      UploadImageState _, $Res Function(UploadImageState) __);
 }
-
 
 /// Adds pattern-matching-related methods to [UploadImageState].
 extension UploadImageStatePatterns on UploadImageState {
-/// A variant of `map` that fallback to returning `orElse`.
-///
-/// It is equivalent to doing:
-/// ```dart
-/// switch (sealedClass) {
-///   case final Subclass value:
-///     return ...;
-///   case _:
-///     return orElse();
-/// }
-/// ```
+  /// A variant of `map` that fallback to returning `orElse`.
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case final Subclass value:
+  ///     return ...;
+  ///   case _:
+  ///     return orElse();
+  /// }
+  /// ```
 
-@optionalTypeArgs TResult maybeMap<TResult extends Object?>({TResult Function( _Initial value)?  initial,TResult Function( LoadingState value)?  loading,TResult Function( SuccessState value)?  success,TResult Function( RemoveImageState value)?  removeImage,TResult Function( ErrorState value)?  error,required TResult orElse(),}){
-final _that = this;
-switch (_that) {
-case _Initial() when initial != null:
-return initial(_that);case LoadingState() when loading != null:
-return loading(_that);case SuccessState() when success != null:
-return success(_that);case RemoveImageState() when removeImage != null:
-return removeImage(_that);case ErrorState() when error != null:
-return error(_that);case _:
-  return orElse();
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Initial value)? initial,
+    TResult Function(LoadingState value)? loading,
+    TResult Function(LoadingIndexState value)? loadingIndex,
+    TResult Function(SuccessState value)? success,
+    TResult Function(RemoveImageState value)? removeImage,
+    TResult Function(ErrorState value)? error,
+    required TResult orElse(),
+  }) {
+    final _that = this;
+    switch (_that) {
+      case _Initial() when initial != null:
+        return initial(_that);
+      case LoadingState() when loading != null:
+        return loading(_that);
+      case LoadingIndexState() when loadingIndex != null:
+        return loadingIndex(_that);
+      case SuccessState() when success != null:
+        return success(_that);
+      case RemoveImageState() when removeImage != null:
+        return removeImage(_that);
+      case ErrorState() when error != null:
+        return error(_that);
+      case _:
+        return orElse();
+    }
+  }
 
-}
-}
-/// A `switch`-like method, using callbacks.
-///
-/// Callbacks receives the raw object, upcasted.
-/// It is equivalent to doing:
-/// ```dart
-/// switch (sealedClass) {
-///   case final Subclass value:
-///     return ...;
-///   case final Subclass2 value:
-///     return ...;
-/// }
-/// ```
+  /// A `switch`-like method, using callbacks.
+  ///
+  /// Callbacks receives the raw object, upcasted.
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case final Subclass value:
+  ///     return ...;
+  ///   case final Subclass2 value:
+  ///     return ...;
+  /// }
+  /// ```
 
-@optionalTypeArgs TResult map<TResult extends Object?>({required TResult Function( _Initial value)  initial,required TResult Function( LoadingState value)  loading,required TResult Function( SuccessState value)  success,required TResult Function( RemoveImageState value)  removeImage,required TResult Function( ErrorState value)  error,}){
-final _that = this;
-switch (_that) {
-case _Initial():
-return initial(_that);case LoadingState():
-return loading(_that);case SuccessState():
-return success(_that);case RemoveImageState():
-return removeImage(_that);case ErrorState():
-return error(_that);case _:
-  throw StateError('Unexpected subclass');
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Initial value) initial,
+    required TResult Function(LoadingState value) loading,
+    required TResult Function(LoadingIndexState value) loadingIndex,
+    required TResult Function(SuccessState value) success,
+    required TResult Function(RemoveImageState value) removeImage,
+    required TResult Function(ErrorState value) error,
+  }) {
+    final _that = this;
+    switch (_that) {
+      case _Initial():
+        return initial(_that);
+      case LoadingState():
+        return loading(_that);
+      case LoadingIndexState():
+        return loadingIndex(_that);
+      case SuccessState():
+        return success(_that);
+      case RemoveImageState():
+        return removeImage(_that);
+      case ErrorState():
+        return error(_that);
+      case _:
+        throw StateError('Unexpected subclass');
+    }
+  }
 
-}
-}
-/// A variant of `map` that fallback to returning `null`.
-///
-/// It is equivalent to doing:
-/// ```dart
-/// switch (sealedClass) {
-///   case final Subclass value:
-///     return ...;
-///   case _:
-///     return null;
-/// }
-/// ```
+  /// A variant of `map` that fallback to returning `null`.
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case final Subclass value:
+  ///     return ...;
+  ///   case _:
+  ///     return null;
+  /// }
+  /// ```
 
-@optionalTypeArgs TResult? mapOrNull<TResult extends Object?>({TResult? Function( _Initial value)?  initial,TResult? Function( LoadingState value)?  loading,TResult? Function( SuccessState value)?  success,TResult? Function( RemoveImageState value)?  removeImage,TResult? Function( ErrorState value)?  error,}){
-final _that = this;
-switch (_that) {
-case _Initial() when initial != null:
-return initial(_that);case LoadingState() when loading != null:
-return loading(_that);case SuccessState() when success != null:
-return success(_that);case RemoveImageState() when removeImage != null:
-return removeImage(_that);case ErrorState() when error != null:
-return error(_that);case _:
-  return null;
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Initial value)? initial,
+    TResult? Function(LoadingState value)? loading,
+    TResult? Function(LoadingIndexState value)? loadingIndex,
+    TResult? Function(SuccessState value)? success,
+    TResult? Function(RemoveImageState value)? removeImage,
+    TResult? Function(ErrorState value)? error,
+  }) {
+    final _that = this;
+    switch (_that) {
+      case _Initial() when initial != null:
+        return initial(_that);
+      case LoadingState() when loading != null:
+        return loading(_that);
+      case LoadingIndexState() when loadingIndex != null:
+        return loadingIndex(_that);
+      case SuccessState() when success != null:
+        return success(_that);
+      case RemoveImageState() when removeImage != null:
+        return removeImage(_that);
+      case ErrorState() when error != null:
+        return error(_that);
+      case _:
+        return null;
+    }
+  }
 
-}
-}
-/// A variant of `when` that fallback to an `orElse` callback.
-///
-/// It is equivalent to doing:
-/// ```dart
-/// switch (sealedClass) {
-///   case Subclass(:final field):
-///     return ...;
-///   case _:
-///     return orElse();
-/// }
-/// ```
+  /// A variant of `when` that fallback to an `orElse` callback.
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case Subclass(:final field):
+  ///     return ...;
+  ///   case _:
+  ///     return orElse();
+  /// }
+  /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>({TResult Function()?  initial,TResult Function()?  loading,TResult Function()?  success,TResult Function( String imgUrl)?  removeImage,TResult Function( String error)?  error,required TResult orElse(),}) {final _that = this;
-switch (_that) {
-case _Initial() when initial != null:
-return initial();case LoadingState() when loading != null:
-return loading();case SuccessState() when success != null:
-return success();case RemoveImageState() when removeImage != null:
-return removeImage(_that.imgUrl);case ErrorState() when error != null:
-return error(_that.error);case _:
-  return orElse();
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? loading,
+    TResult Function(int index)? loadingIndex,
+    TResult Function()? success,
+    TResult Function(String imgUrl)? removeImage,
+    TResult Function(String error)? error,
+    required TResult orElse(),
+  }) {
+    final _that = this;
+    switch (_that) {
+      case _Initial() when initial != null:
+        return initial();
+      case LoadingState() when loading != null:
+        return loading();
+      case LoadingIndexState() when loadingIndex != null:
+        return loadingIndex(_that.index);
+      case SuccessState() when success != null:
+        return success();
+      case RemoveImageState() when removeImage != null:
+        return removeImage(_that.imgUrl);
+      case ErrorState() when error != null:
+        return error(_that.error);
+      case _:
+        return orElse();
+    }
+  }
 
-}
-}
-/// A `switch`-like method, using callbacks.
-///
-/// As opposed to `map`, this offers destructuring.
-/// It is equivalent to doing:
-/// ```dart
-/// switch (sealedClass) {
-///   case Subclass(:final field):
-///     return ...;
-///   case Subclass2(:final field2):
-///     return ...;
-/// }
-/// ```
+  /// A `switch`-like method, using callbacks.
+  ///
+  /// As opposed to `map`, this offers destructuring.
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case Subclass(:final field):
+  ///     return ...;
+  ///   case Subclass2(:final field2):
+  ///     return ...;
+  /// }
+  /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>({required TResult Function()  initial,required TResult Function()  loading,required TResult Function()  success,required TResult Function( String imgUrl)  removeImage,required TResult Function( String error)  error,}) {final _that = this;
-switch (_that) {
-case _Initial():
-return initial();case LoadingState():
-return loading();case SuccessState():
-return success();case RemoveImageState():
-return removeImage(_that.imgUrl);case ErrorState():
-return error(_that.error);case _:
-  throw StateError('Unexpected subclass');
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+    required TResult Function() loading,
+    required TResult Function(int index) loadingIndex,
+    required TResult Function() success,
+    required TResult Function(String imgUrl) removeImage,
+    required TResult Function(String error) error,
+  }) {
+    final _that = this;
+    switch (_that) {
+      case _Initial():
+        return initial();
+      case LoadingState():
+        return loading();
+      case LoadingIndexState():
+        return loadingIndex(_that.index);
+      case SuccessState():
+        return success();
+      case RemoveImageState():
+        return removeImage(_that.imgUrl);
+      case ErrorState():
+        return error(_that.error);
+      case _:
+        throw StateError('Unexpected subclass');
+    }
+  }
 
-}
-}
-/// A variant of `when` that fallback to returning `null`
-///
-/// It is equivalent to doing:
-/// ```dart
-/// switch (sealedClass) {
-///   case Subclass(:final field):
-///     return ...;
-///   case _:
-///     return null;
-/// }
-/// ```
+  /// A variant of `when` that fallback to returning `null`
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case Subclass(:final field):
+  ///     return ...;
+  ///   case _:
+  ///     return null;
+  /// }
+  /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>({TResult? Function()?  initial,TResult? Function()?  loading,TResult? Function()?  success,TResult? Function( String imgUrl)?  removeImage,TResult? Function( String error)?  error,}) {final _that = this;
-switch (_that) {
-case _Initial() when initial != null:
-return initial();case LoadingState() when loading != null:
-return loading();case SuccessState() when success != null:
-return success();case RemoveImageState() when removeImage != null:
-return removeImage(_that.imgUrl);case ErrorState() when error != null:
-return error(_that.error);case _:
-  return null;
-
-}
-}
-
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? initial,
+    TResult? Function()? loading,
+    TResult? Function(int index)? loadingIndex,
+    TResult? Function()? success,
+    TResult? Function(String imgUrl)? removeImage,
+    TResult? Function(String error)? error,
+  }) {
+    final _that = this;
+    switch (_that) {
+      case _Initial() when initial != null:
+        return initial();
+      case LoadingState() when loading != null:
+        return loading();
+      case LoadingIndexState() when loadingIndex != null:
+        return loadingIndex(_that.index);
+      case SuccessState() when success != null:
+        return success();
+      case RemoveImageState() when removeImage != null:
+        return removeImage(_that.imgUrl);
+      case ErrorState() when error != null:
+        return error(_that.error);
+      case _:
+        return null;
+    }
+  }
 }
 
 /// @nodoc
-
 
 class _Initial implements UploadImageState {
   const _Initial();
-  
 
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _Initial);
+  }
 
+  @override
+  int get hashCode => runtimeType.hashCode;
 
-
-
-
-@override
-bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _Initial);
+  @override
+  String toString() {
+    return 'UploadImageState.initial()';
+  }
 }
-
-
-@override
-int get hashCode => runtimeType.hashCode;
-
-@override
-String toString() {
-  return 'UploadImageState.initial()';
-}
-
-
-}
-
-
-
 
 /// @nodoc
-
 
 class LoadingState implements UploadImageState {
   const LoadingState();
-  
 
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is LoadingState);
+  }
 
+  @override
+  int get hashCode => runtimeType.hashCode;
 
-
-
-
-@override
-bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is LoadingState);
+  @override
+  String toString() {
+    return 'UploadImageState.loading()';
+  }
 }
-
-
-@override
-int get hashCode => runtimeType.hashCode;
-
-@override
-String toString() {
-  return 'UploadImageState.loading()';
-}
-
-
-}
-
-
-
 
 /// @nodoc
 
+class LoadingIndexState implements UploadImageState {
+  const LoadingIndexState({required this.index});
+
+  final int index;
+
+  /// Create a copy of UploadImageState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @pragma('vm:prefer-inline')
+  $LoadingIndexStateCopyWith<LoadingIndexState> get copyWith =>
+      _$LoadingIndexStateCopyWithImpl<LoadingIndexState>(this, _$identity);
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is LoadingIndexState &&
+            (identical(other.index, index) || other.index == index));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, index);
+
+  @override
+  String toString() {
+    return 'UploadImageState.loadingIndex(index: $index)';
+  }
+}
+
+/// @nodoc
+abstract mixin class $LoadingIndexStateCopyWith<$Res>
+    implements $UploadImageStateCopyWith<$Res> {
+  factory $LoadingIndexStateCopyWith(
+          LoadingIndexState value, $Res Function(LoadingIndexState) _then) =
+      _$LoadingIndexStateCopyWithImpl;
+  @useResult
+  $Res call({int index});
+}
+
+/// @nodoc
+class _$LoadingIndexStateCopyWithImpl<$Res>
+    implements $LoadingIndexStateCopyWith<$Res> {
+  _$LoadingIndexStateCopyWithImpl(this._self, this._then);
+
+  final LoadingIndexState _self;
+  final $Res Function(LoadingIndexState) _then;
+
+  /// Create a copy of UploadImageState
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  $Res call({
+    Object? index = null,
+  }) {
+    return _then(LoadingIndexState(
+      index: null == index
+          ? _self.index
+          : index // ignore: cast_nullable_to_non_nullable
+              as int,
+    ));
+  }
+}
+
+/// @nodoc
 
 class SuccessState implements UploadImageState {
   const SuccessState();
-  
 
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is SuccessState);
+  }
 
+  @override
+  int get hashCode => runtimeType.hashCode;
 
-
-
-
-@override
-bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is SuccessState);
+  @override
+  String toString() {
+    return 'UploadImageState.success()';
+  }
 }
-
-
-@override
-int get hashCode => runtimeType.hashCode;
-
-@override
-String toString() {
-  return 'UploadImageState.success()';
-}
-
-
-}
-
-
-
 
 /// @nodoc
-
 
 class RemoveImageState implements UploadImageState {
   const RemoveImageState({required this.imgUrl});
-  
 
- final  String imgUrl;
+  final String imgUrl;
 
-/// Create a copy of UploadImageState
-/// with the given fields replaced by the non-null parameter values.
-@JsonKey(includeFromJson: false, includeToJson: false)
-@pragma('vm:prefer-inline')
-$RemoveImageStateCopyWith<RemoveImageState> get copyWith => _$RemoveImageStateCopyWithImpl<RemoveImageState>(this, _$identity);
+  /// Create a copy of UploadImageState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @pragma('vm:prefer-inline')
+  $RemoveImageStateCopyWith<RemoveImageState> get copyWith =>
+      _$RemoveImageStateCopyWithImpl<RemoveImageState>(this, _$identity);
 
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is RemoveImageState &&
+            (identical(other.imgUrl, imgUrl) || other.imgUrl == imgUrl));
+  }
 
+  @override
+  int get hashCode => Object.hash(runtimeType, imgUrl);
 
-@override
-bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is RemoveImageState&&(identical(other.imgUrl, imgUrl) || other.imgUrl == imgUrl));
-}
-
-
-@override
-int get hashCode => Object.hash(runtimeType,imgUrl);
-
-@override
-String toString() {
-  return 'UploadImageState.removeImage(imgUrl: $imgUrl)';
-}
-
-
+  @override
+  String toString() {
+    return 'UploadImageState.removeImage(imgUrl: $imgUrl)';
+  }
 }
 
 /// @nodoc
-abstract mixin class $RemoveImageStateCopyWith<$Res> implements $UploadImageStateCopyWith<$Res> {
-  factory $RemoveImageStateCopyWith(RemoveImageState value, $Res Function(RemoveImageState) _then) = _$RemoveImageStateCopyWithImpl;
-@useResult
-$Res call({
- String imgUrl
-});
-
-
-
-
+abstract mixin class $RemoveImageStateCopyWith<$Res>
+    implements $UploadImageStateCopyWith<$Res> {
+  factory $RemoveImageStateCopyWith(
+          RemoveImageState value, $Res Function(RemoveImageState) _then) =
+      _$RemoveImageStateCopyWithImpl;
+  @useResult
+  $Res call({String imgUrl});
 }
+
 /// @nodoc
 class _$RemoveImageStateCopyWithImpl<$Res>
     implements $RemoveImageStateCopyWith<$Res> {
@@ -345,82 +455,82 @@ class _$RemoveImageStateCopyWithImpl<$Res>
   final RemoveImageState _self;
   final $Res Function(RemoveImageState) _then;
 
-/// Create a copy of UploadImageState
-/// with the given fields replaced by the non-null parameter values.
-@pragma('vm:prefer-inline') $Res call({Object? imgUrl = null,}) {
-  return _then(RemoveImageState(
-imgUrl: null == imgUrl ? _self.imgUrl : imgUrl // ignore: cast_nullable_to_non_nullable
-as String,
-  ));
-}
-
-
+  /// Create a copy of UploadImageState
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  $Res call({
+    Object? imgUrl = null,
+  }) {
+    return _then(RemoveImageState(
+      imgUrl: null == imgUrl
+          ? _self.imgUrl
+          : imgUrl // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
 }
 
 /// @nodoc
-
 
 class ErrorState implements UploadImageState {
   const ErrorState({required this.error});
-  
 
- final  String error;
+  final String error;
 
-/// Create a copy of UploadImageState
-/// with the given fields replaced by the non-null parameter values.
-@JsonKey(includeFromJson: false, includeToJson: false)
-@pragma('vm:prefer-inline')
-$ErrorStateCopyWith<ErrorState> get copyWith => _$ErrorStateCopyWithImpl<ErrorState>(this, _$identity);
+  /// Create a copy of UploadImageState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @pragma('vm:prefer-inline')
+  $ErrorStateCopyWith<ErrorState> get copyWith =>
+      _$ErrorStateCopyWithImpl<ErrorState>(this, _$identity);
 
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is ErrorState &&
+            (identical(other.error, error) || other.error == error));
+  }
 
+  @override
+  int get hashCode => Object.hash(runtimeType, error);
 
-@override
-bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is ErrorState&&(identical(other.error, error) || other.error == error));
-}
-
-
-@override
-int get hashCode => Object.hash(runtimeType,error);
-
-@override
-String toString() {
-  return 'UploadImageState.error(error: $error)';
-}
-
-
+  @override
+  String toString() {
+    return 'UploadImageState.error(error: $error)';
+  }
 }
 
 /// @nodoc
-abstract mixin class $ErrorStateCopyWith<$Res> implements $UploadImageStateCopyWith<$Res> {
-  factory $ErrorStateCopyWith(ErrorState value, $Res Function(ErrorState) _then) = _$ErrorStateCopyWithImpl;
-@useResult
-$Res call({
- String error
-});
-
-
-
-
+abstract mixin class $ErrorStateCopyWith<$Res>
+    implements $UploadImageStateCopyWith<$Res> {
+  factory $ErrorStateCopyWith(
+          ErrorState value, $Res Function(ErrorState) _then) =
+      _$ErrorStateCopyWithImpl;
+  @useResult
+  $Res call({String error});
 }
+
 /// @nodoc
-class _$ErrorStateCopyWithImpl<$Res>
-    implements $ErrorStateCopyWith<$Res> {
+class _$ErrorStateCopyWithImpl<$Res> implements $ErrorStateCopyWith<$Res> {
   _$ErrorStateCopyWithImpl(this._self, this._then);
 
   final ErrorState _self;
   final $Res Function(ErrorState) _then;
 
-/// Create a copy of UploadImageState
-/// with the given fields replaced by the non-null parameter values.
-@pragma('vm:prefer-inline') $Res call({Object? error = null,}) {
-  return _then(ErrorState(
-error: null == error ? _self.error : error // ignore: cast_nullable_to_non_nullable
-as String,
-  ));
-}
-
-
+  /// Create a copy of UploadImageState
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  $Res call({
+    Object? error = null,
+  }) {
+    return _then(ErrorState(
+      error: null == error
+          ? _self.error
+          : error // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
 }
 
 // dart format on

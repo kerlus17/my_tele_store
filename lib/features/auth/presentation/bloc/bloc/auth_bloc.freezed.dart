@@ -11,680 +11,723 @@ part of 'auth_bloc.dart';
 
 // dart format off
 T _$identity<T>(T value) => value;
+
 /// @nodoc
 mixin _$AuthEvent {
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is AuthEvent);
+  }
 
+  @override
+  int get hashCode => runtimeType.hashCode;
 
-
-
-
-@override
-bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is AuthEvent);
-}
-
-
-@override
-int get hashCode => runtimeType.hashCode;
-
-@override
-String toString() {
-  return 'AuthEvent()';
-}
-
-
+  @override
+  String toString() {
+    return 'AuthEvent()';
+  }
 }
 
 /// @nodoc
-class $AuthEventCopyWith<$Res>  {
-$AuthEventCopyWith(AuthEvent _, $Res Function(AuthEvent) __);
+class $AuthEventCopyWith<$Res> {
+  $AuthEventCopyWith(AuthEvent _, $Res Function(AuthEvent) __);
 }
-
 
 /// Adds pattern-matching-related methods to [AuthEvent].
 extension AuthEventPatterns on AuthEvent {
-/// A variant of `map` that fallback to returning `orElse`.
-///
-/// It is equivalent to doing:
-/// ```dart
-/// switch (sealedClass) {
-///   case final Subclass value:
-///     return ...;
-///   case _:
-///     return orElse();
-/// }
-/// ```
+  /// A variant of `map` that fallback to returning `orElse`.
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case final Subclass value:
+  ///     return ...;
+  ///   case _:
+  ///     return orElse();
+  /// }
+  /// ```
 
-@optionalTypeArgs TResult maybeMap<TResult extends Object?>({TResult Function( _Started value)?  started,TResult Function( LoginEvent value)?  login,TResult Function( SignUpEvent value)?  signUp,required TResult orElse(),}){
-final _that = this;
-switch (_that) {
-case _Started() when started != null:
-return started(_that);case LoginEvent() when login != null:
-return login(_that);case SignUpEvent() when signUp != null:
-return signUp(_that);case _:
-  return orElse();
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Started value)? started,
+    TResult Function(LoginEvent value)? login,
+    TResult Function(SignUpEvent value)? signUp,
+    required TResult orElse(),
+  }) {
+    final _that = this;
+    switch (_that) {
+      case _Started() when started != null:
+        return started(_that);
+      case LoginEvent() when login != null:
+        return login(_that);
+      case SignUpEvent() when signUp != null:
+        return signUp(_that);
+      case _:
+        return orElse();
+    }
+  }
 
-}
-}
-/// A `switch`-like method, using callbacks.
-///
-/// Callbacks receives the raw object, upcasted.
-/// It is equivalent to doing:
-/// ```dart
-/// switch (sealedClass) {
-///   case final Subclass value:
-///     return ...;
-///   case final Subclass2 value:
-///     return ...;
-/// }
-/// ```
+  /// A `switch`-like method, using callbacks.
+  ///
+  /// Callbacks receives the raw object, upcasted.
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case final Subclass value:
+  ///     return ...;
+  ///   case final Subclass2 value:
+  ///     return ...;
+  /// }
+  /// ```
 
-@optionalTypeArgs TResult map<TResult extends Object?>({required TResult Function( _Started value)  started,required TResult Function( LoginEvent value)  login,required TResult Function( SignUpEvent value)  signUp,}){
-final _that = this;
-switch (_that) {
-case _Started():
-return started(_that);case LoginEvent():
-return login(_that);case SignUpEvent():
-return signUp(_that);case _:
-  throw StateError('Unexpected subclass');
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Started value) started,
+    required TResult Function(LoginEvent value) login,
+    required TResult Function(SignUpEvent value) signUp,
+  }) {
+    final _that = this;
+    switch (_that) {
+      case _Started():
+        return started(_that);
+      case LoginEvent():
+        return login(_that);
+      case SignUpEvent():
+        return signUp(_that);
+      case _:
+        throw StateError('Unexpected subclass');
+    }
+  }
 
-}
-}
-/// A variant of `map` that fallback to returning `null`.
-///
-/// It is equivalent to doing:
-/// ```dart
-/// switch (sealedClass) {
-///   case final Subclass value:
-///     return ...;
-///   case _:
-///     return null;
-/// }
-/// ```
+  /// A variant of `map` that fallback to returning `null`.
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case final Subclass value:
+  ///     return ...;
+  ///   case _:
+  ///     return null;
+  /// }
+  /// ```
 
-@optionalTypeArgs TResult? mapOrNull<TResult extends Object?>({TResult? Function( _Started value)?  started,TResult? Function( LoginEvent value)?  login,TResult? Function( SignUpEvent value)?  signUp,}){
-final _that = this;
-switch (_that) {
-case _Started() when started != null:
-return started(_that);case LoginEvent() when login != null:
-return login(_that);case SignUpEvent() when signUp != null:
-return signUp(_that);case _:
-  return null;
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Started value)? started,
+    TResult? Function(LoginEvent value)? login,
+    TResult? Function(SignUpEvent value)? signUp,
+  }) {
+    final _that = this;
+    switch (_that) {
+      case _Started() when started != null:
+        return started(_that);
+      case LoginEvent() when login != null:
+        return login(_that);
+      case SignUpEvent() when signUp != null:
+        return signUp(_that);
+      case _:
+        return null;
+    }
+  }
 
-}
-}
-/// A variant of `when` that fallback to an `orElse` callback.
-///
-/// It is equivalent to doing:
-/// ```dart
-/// switch (sealedClass) {
-///   case Subclass(:final field):
-///     return ...;
-///   case _:
-///     return orElse();
-/// }
-/// ```
+  /// A variant of `when` that fallback to an `orElse` callback.
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case Subclass(:final field):
+  ///     return ...;
+  ///   case _:
+  ///     return orElse();
+  /// }
+  /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>({TResult Function()?  started,TResult Function()?  login,TResult Function( String imgUrl)?  signUp,required TResult orElse(),}) {final _that = this;
-switch (_that) {
-case _Started() when started != null:
-return started();case LoginEvent() when login != null:
-return login();case SignUpEvent() when signUp != null:
-return signUp(_that.imgUrl);case _:
-  return orElse();
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? started,
+    TResult Function()? login,
+    TResult Function(String imgUrl)? signUp,
+    required TResult orElse(),
+  }) {
+    final _that = this;
+    switch (_that) {
+      case _Started() when started != null:
+        return started();
+      case LoginEvent() when login != null:
+        return login();
+      case SignUpEvent() when signUp != null:
+        return signUp(_that.imgUrl);
+      case _:
+        return orElse();
+    }
+  }
 
-}
-}
-/// A `switch`-like method, using callbacks.
-///
-/// As opposed to `map`, this offers destructuring.
-/// It is equivalent to doing:
-/// ```dart
-/// switch (sealedClass) {
-///   case Subclass(:final field):
-///     return ...;
-///   case Subclass2(:final field2):
-///     return ...;
-/// }
-/// ```
+  /// A `switch`-like method, using callbacks.
+  ///
+  /// As opposed to `map`, this offers destructuring.
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case Subclass(:final field):
+  ///     return ...;
+  ///   case Subclass2(:final field2):
+  ///     return ...;
+  /// }
+  /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>({required TResult Function()  started,required TResult Function()  login,required TResult Function( String imgUrl)  signUp,}) {final _that = this;
-switch (_that) {
-case _Started():
-return started();case LoginEvent():
-return login();case SignUpEvent():
-return signUp(_that.imgUrl);case _:
-  throw StateError('Unexpected subclass');
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() started,
+    required TResult Function() login,
+    required TResult Function(String imgUrl) signUp,
+  }) {
+    final _that = this;
+    switch (_that) {
+      case _Started():
+        return started();
+      case LoginEvent():
+        return login();
+      case SignUpEvent():
+        return signUp(_that.imgUrl);
+      case _:
+        throw StateError('Unexpected subclass');
+    }
+  }
 
-}
-}
-/// A variant of `when` that fallback to returning `null`
-///
-/// It is equivalent to doing:
-/// ```dart
-/// switch (sealedClass) {
-///   case Subclass(:final field):
-///     return ...;
-///   case _:
-///     return null;
-/// }
-/// ```
+  /// A variant of `when` that fallback to returning `null`
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case Subclass(:final field):
+  ///     return ...;
+  ///   case _:
+  ///     return null;
+  /// }
+  /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>({TResult? Function()?  started,TResult? Function()?  login,TResult? Function( String imgUrl)?  signUp,}) {final _that = this;
-switch (_that) {
-case _Started() when started != null:
-return started();case LoginEvent() when login != null:
-return login();case SignUpEvent() when signUp != null:
-return signUp(_that.imgUrl);case _:
-  return null;
-
-}
-}
-
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? started,
+    TResult? Function()? login,
+    TResult? Function(String imgUrl)? signUp,
+  }) {
+    final _that = this;
+    switch (_that) {
+      case _Started() when started != null:
+        return started();
+      case LoginEvent() when login != null:
+        return login();
+      case SignUpEvent() when signUp != null:
+        return signUp(_that.imgUrl);
+      case _:
+        return null;
+    }
+  }
 }
 
 /// @nodoc
-
 
 class _Started implements AuthEvent {
   const _Started();
-  
 
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _Started);
+  }
 
+  @override
+  int get hashCode => runtimeType.hashCode;
 
-
-
-
-@override
-bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _Started);
+  @override
+  String toString() {
+    return 'AuthEvent.started()';
+  }
 }
-
-
-@override
-int get hashCode => runtimeType.hashCode;
-
-@override
-String toString() {
-  return 'AuthEvent.started()';
-}
-
-
-}
-
-
-
 
 /// @nodoc
-
 
 class LoginEvent implements AuthEvent {
   const LoginEvent();
-  
 
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is LoginEvent);
+  }
 
+  @override
+  int get hashCode => runtimeType.hashCode;
 
-
-
-
-@override
-bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is LoginEvent);
+  @override
+  String toString() {
+    return 'AuthEvent.login()';
+  }
 }
-
-
-@override
-int get hashCode => runtimeType.hashCode;
-
-@override
-String toString() {
-  return 'AuthEvent.login()';
-}
-
-
-}
-
-
-
 
 /// @nodoc
-
 
 class SignUpEvent implements AuthEvent {
   const SignUpEvent({required this.imgUrl});
-  
 
- final  String imgUrl;
+  final String imgUrl;
 
-/// Create a copy of AuthEvent
-/// with the given fields replaced by the non-null parameter values.
-@JsonKey(includeFromJson: false, includeToJson: false)
-@pragma('vm:prefer-inline')
-$SignUpEventCopyWith<SignUpEvent> get copyWith => _$SignUpEventCopyWithImpl<SignUpEvent>(this, _$identity);
+  /// Create a copy of AuthEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @pragma('vm:prefer-inline')
+  $SignUpEventCopyWith<SignUpEvent> get copyWith =>
+      _$SignUpEventCopyWithImpl<SignUpEvent>(this, _$identity);
 
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is SignUpEvent &&
+            (identical(other.imgUrl, imgUrl) || other.imgUrl == imgUrl));
+  }
 
+  @override
+  int get hashCode => Object.hash(runtimeType, imgUrl);
 
-@override
-bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is SignUpEvent&&(identical(other.imgUrl, imgUrl) || other.imgUrl == imgUrl));
-}
-
-
-@override
-int get hashCode => Object.hash(runtimeType,imgUrl);
-
-@override
-String toString() {
-  return 'AuthEvent.signUp(imgUrl: $imgUrl)';
-}
-
-
+  @override
+  String toString() {
+    return 'AuthEvent.signUp(imgUrl: $imgUrl)';
+  }
 }
 
 /// @nodoc
-abstract mixin class $SignUpEventCopyWith<$Res> implements $AuthEventCopyWith<$Res> {
-  factory $SignUpEventCopyWith(SignUpEvent value, $Res Function(SignUpEvent) _then) = _$SignUpEventCopyWithImpl;
-@useResult
-$Res call({
- String imgUrl
-});
-
-
-
-
+abstract mixin class $SignUpEventCopyWith<$Res>
+    implements $AuthEventCopyWith<$Res> {
+  factory $SignUpEventCopyWith(
+          SignUpEvent value, $Res Function(SignUpEvent) _then) =
+      _$SignUpEventCopyWithImpl;
+  @useResult
+  $Res call({String imgUrl});
 }
+
 /// @nodoc
-class _$SignUpEventCopyWithImpl<$Res>
-    implements $SignUpEventCopyWith<$Res> {
+class _$SignUpEventCopyWithImpl<$Res> implements $SignUpEventCopyWith<$Res> {
   _$SignUpEventCopyWithImpl(this._self, this._then);
 
   final SignUpEvent _self;
   final $Res Function(SignUpEvent) _then;
 
-/// Create a copy of AuthEvent
-/// with the given fields replaced by the non-null parameter values.
-@pragma('vm:prefer-inline') $Res call({Object? imgUrl = null,}) {
-  return _then(SignUpEvent(
-imgUrl: null == imgUrl ? _self.imgUrl : imgUrl // ignore: cast_nullable_to_non_nullable
-as String,
-  ));
-}
-
-
+  /// Create a copy of AuthEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  $Res call({
+    Object? imgUrl = null,
+  }) {
+    return _then(SignUpEvent(
+      imgUrl: null == imgUrl
+          ? _self.imgUrl
+          : imgUrl // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
 }
 
 /// @nodoc
 mixin _$AuthState {
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is AuthState);
+  }
 
+  @override
+  int get hashCode => runtimeType.hashCode;
 
-
-
-
-@override
-bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is AuthState);
-}
-
-
-@override
-int get hashCode => runtimeType.hashCode;
-
-@override
-String toString() {
-  return 'AuthState()';
-}
-
-
+  @override
+  String toString() {
+    return 'AuthState()';
+  }
 }
 
 /// @nodoc
-class $AuthStateCopyWith<$Res>  {
-$AuthStateCopyWith(AuthState _, $Res Function(AuthState) __);
+class $AuthStateCopyWith<$Res> {
+  $AuthStateCopyWith(AuthState _, $Res Function(AuthState) __);
 }
-
 
 /// Adds pattern-matching-related methods to [AuthState].
 extension AuthStatePatterns on AuthState {
-/// A variant of `map` that fallback to returning `orElse`.
-///
-/// It is equivalent to doing:
-/// ```dart
-/// switch (sealedClass) {
-///   case final Subclass value:
-///     return ...;
-///   case _:
-///     return orElse();
-/// }
-/// ```
+  /// A variant of `map` that fallback to returning `orElse`.
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case final Subclass value:
+  ///     return ...;
+  ///   case _:
+  ///     return orElse();
+  /// }
+  /// ```
 
-@optionalTypeArgs TResult maybeMap<TResult extends Object?>({TResult Function( _Initial value)?  initial,TResult Function( LoadingState value)?  loading,TResult Function( SuccessState value)?  success,TResult Function( ErrorState value)?  error,required TResult orElse(),}){
-final _that = this;
-switch (_that) {
-case _Initial() when initial != null:
-return initial(_that);case LoadingState() when loading != null:
-return loading(_that);case SuccessState() when success != null:
-return success(_that);case ErrorState() when error != null:
-return error(_that);case _:
-  return orElse();
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Initial value)? initial,
+    TResult Function(LoadingState value)? loading,
+    TResult Function(SuccessState value)? success,
+    TResult Function(ErrorState value)? error,
+    required TResult orElse(),
+  }) {
+    final _that = this;
+    switch (_that) {
+      case _Initial() when initial != null:
+        return initial(_that);
+      case LoadingState() when loading != null:
+        return loading(_that);
+      case SuccessState() when success != null:
+        return success(_that);
+      case ErrorState() when error != null:
+        return error(_that);
+      case _:
+        return orElse();
+    }
+  }
 
-}
-}
-/// A `switch`-like method, using callbacks.
-///
-/// Callbacks receives the raw object, upcasted.
-/// It is equivalent to doing:
-/// ```dart
-/// switch (sealedClass) {
-///   case final Subclass value:
-///     return ...;
-///   case final Subclass2 value:
-///     return ...;
-/// }
-/// ```
+  /// A `switch`-like method, using callbacks.
+  ///
+  /// Callbacks receives the raw object, upcasted.
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case final Subclass value:
+  ///     return ...;
+  ///   case final Subclass2 value:
+  ///     return ...;
+  /// }
+  /// ```
 
-@optionalTypeArgs TResult map<TResult extends Object?>({required TResult Function( _Initial value)  initial,required TResult Function( LoadingState value)  loading,required TResult Function( SuccessState value)  success,required TResult Function( ErrorState value)  error,}){
-final _that = this;
-switch (_that) {
-case _Initial():
-return initial(_that);case LoadingState():
-return loading(_that);case SuccessState():
-return success(_that);case ErrorState():
-return error(_that);case _:
-  throw StateError('Unexpected subclass');
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Initial value) initial,
+    required TResult Function(LoadingState value) loading,
+    required TResult Function(SuccessState value) success,
+    required TResult Function(ErrorState value) error,
+  }) {
+    final _that = this;
+    switch (_that) {
+      case _Initial():
+        return initial(_that);
+      case LoadingState():
+        return loading(_that);
+      case SuccessState():
+        return success(_that);
+      case ErrorState():
+        return error(_that);
+      case _:
+        throw StateError('Unexpected subclass');
+    }
+  }
 
-}
-}
-/// A variant of `map` that fallback to returning `null`.
-///
-/// It is equivalent to doing:
-/// ```dart
-/// switch (sealedClass) {
-///   case final Subclass value:
-///     return ...;
-///   case _:
-///     return null;
-/// }
-/// ```
+  /// A variant of `map` that fallback to returning `null`.
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case final Subclass value:
+  ///     return ...;
+  ///   case _:
+  ///     return null;
+  /// }
+  /// ```
 
-@optionalTypeArgs TResult? mapOrNull<TResult extends Object?>({TResult? Function( _Initial value)?  initial,TResult? Function( LoadingState value)?  loading,TResult? Function( SuccessState value)?  success,TResult? Function( ErrorState value)?  error,}){
-final _that = this;
-switch (_that) {
-case _Initial() when initial != null:
-return initial(_that);case LoadingState() when loading != null:
-return loading(_that);case SuccessState() when success != null:
-return success(_that);case ErrorState() when error != null:
-return error(_that);case _:
-  return null;
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Initial value)? initial,
+    TResult? Function(LoadingState value)? loading,
+    TResult? Function(SuccessState value)? success,
+    TResult? Function(ErrorState value)? error,
+  }) {
+    final _that = this;
+    switch (_that) {
+      case _Initial() when initial != null:
+        return initial(_that);
+      case LoadingState() when loading != null:
+        return loading(_that);
+      case SuccessState() when success != null:
+        return success(_that);
+      case ErrorState() when error != null:
+        return error(_that);
+      case _:
+        return null;
+    }
+  }
 
-}
-}
-/// A variant of `when` that fallback to an `orElse` callback.
-///
-/// It is equivalent to doing:
-/// ```dart
-/// switch (sealedClass) {
-///   case Subclass(:final field):
-///     return ...;
-///   case _:
-///     return orElse();
-/// }
-/// ```
+  /// A variant of `when` that fallback to an `orElse` callback.
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case Subclass(:final field):
+  ///     return ...;
+  ///   case _:
+  ///     return orElse();
+  /// }
+  /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>({TResult Function()?  initial,TResult Function()?  loading,TResult Function( String userRole)?  success,TResult Function( String error)?  error,required TResult orElse(),}) {final _that = this;
-switch (_that) {
-case _Initial() when initial != null:
-return initial();case LoadingState() when loading != null:
-return loading();case SuccessState() when success != null:
-return success(_that.userRole);case ErrorState() when error != null:
-return error(_that.error);case _:
-  return orElse();
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? loading,
+    TResult Function(String userRole)? success,
+    TResult Function(String error)? error,
+    required TResult orElse(),
+  }) {
+    final _that = this;
+    switch (_that) {
+      case _Initial() when initial != null:
+        return initial();
+      case LoadingState() when loading != null:
+        return loading();
+      case SuccessState() when success != null:
+        return success(_that.userRole);
+      case ErrorState() when error != null:
+        return error(_that.error);
+      case _:
+        return orElse();
+    }
+  }
 
-}
-}
-/// A `switch`-like method, using callbacks.
-///
-/// As opposed to `map`, this offers destructuring.
-/// It is equivalent to doing:
-/// ```dart
-/// switch (sealedClass) {
-///   case Subclass(:final field):
-///     return ...;
-///   case Subclass2(:final field2):
-///     return ...;
-/// }
-/// ```
+  /// A `switch`-like method, using callbacks.
+  ///
+  /// As opposed to `map`, this offers destructuring.
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case Subclass(:final field):
+  ///     return ...;
+  ///   case Subclass2(:final field2):
+  ///     return ...;
+  /// }
+  /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>({required TResult Function()  initial,required TResult Function()  loading,required TResult Function( String userRole)  success,required TResult Function( String error)  error,}) {final _that = this;
-switch (_that) {
-case _Initial():
-return initial();case LoadingState():
-return loading();case SuccessState():
-return success(_that.userRole);case ErrorState():
-return error(_that.error);case _:
-  throw StateError('Unexpected subclass');
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+    required TResult Function() loading,
+    required TResult Function(String userRole) success,
+    required TResult Function(String error) error,
+  }) {
+    final _that = this;
+    switch (_that) {
+      case _Initial():
+        return initial();
+      case LoadingState():
+        return loading();
+      case SuccessState():
+        return success(_that.userRole);
+      case ErrorState():
+        return error(_that.error);
+      case _:
+        throw StateError('Unexpected subclass');
+    }
+  }
 
-}
-}
-/// A variant of `when` that fallback to returning `null`
-///
-/// It is equivalent to doing:
-/// ```dart
-/// switch (sealedClass) {
-///   case Subclass(:final field):
-///     return ...;
-///   case _:
-///     return null;
-/// }
-/// ```
+  /// A variant of `when` that fallback to returning `null`
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case Subclass(:final field):
+  ///     return ...;
+  ///   case _:
+  ///     return null;
+  /// }
+  /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>({TResult? Function()?  initial,TResult? Function()?  loading,TResult? Function( String userRole)?  success,TResult? Function( String error)?  error,}) {final _that = this;
-switch (_that) {
-case _Initial() when initial != null:
-return initial();case LoadingState() when loading != null:
-return loading();case SuccessState() when success != null:
-return success(_that.userRole);case ErrorState() when error != null:
-return error(_that.error);case _:
-  return null;
-
-}
-}
-
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? initial,
+    TResult? Function()? loading,
+    TResult? Function(String userRole)? success,
+    TResult? Function(String error)? error,
+  }) {
+    final _that = this;
+    switch (_that) {
+      case _Initial() when initial != null:
+        return initial();
+      case LoadingState() when loading != null:
+        return loading();
+      case SuccessState() when success != null:
+        return success(_that.userRole);
+      case ErrorState() when error != null:
+        return error(_that.error);
+      case _:
+        return null;
+    }
+  }
 }
 
 /// @nodoc
-
 
 class _Initial implements AuthState {
   const _Initial();
-  
 
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _Initial);
+  }
 
+  @override
+  int get hashCode => runtimeType.hashCode;
 
-
-
-
-@override
-bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _Initial);
+  @override
+  String toString() {
+    return 'AuthState.initial()';
+  }
 }
-
-
-@override
-int get hashCode => runtimeType.hashCode;
-
-@override
-String toString() {
-  return 'AuthState.initial()';
-}
-
-
-}
-
-
-
 
 /// @nodoc
-
 
 class LoadingState implements AuthState {
   const LoadingState();
-  
 
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is LoadingState);
+  }
 
+  @override
+  int get hashCode => runtimeType.hashCode;
 
-
-
-
-@override
-bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is LoadingState);
+  @override
+  String toString() {
+    return 'AuthState.loading()';
+  }
 }
-
-
-@override
-int get hashCode => runtimeType.hashCode;
-
-@override
-String toString() {
-  return 'AuthState.loading()';
-}
-
-
-}
-
-
-
 
 /// @nodoc
-
 
 class SuccessState implements AuthState {
   const SuccessState({required this.userRole});
-  
 
- final  String userRole;
+  final String userRole;
 
-/// Create a copy of AuthState
-/// with the given fields replaced by the non-null parameter values.
-@JsonKey(includeFromJson: false, includeToJson: false)
-@pragma('vm:prefer-inline')
-$SuccessStateCopyWith<SuccessState> get copyWith => _$SuccessStateCopyWithImpl<SuccessState>(this, _$identity);
+  /// Create a copy of AuthState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @pragma('vm:prefer-inline')
+  $SuccessStateCopyWith<SuccessState> get copyWith =>
+      _$SuccessStateCopyWithImpl<SuccessState>(this, _$identity);
 
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is SuccessState &&
+            (identical(other.userRole, userRole) ||
+                other.userRole == userRole));
+  }
 
+  @override
+  int get hashCode => Object.hash(runtimeType, userRole);
 
-@override
-bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is SuccessState&&(identical(other.userRole, userRole) || other.userRole == userRole));
-}
-
-
-@override
-int get hashCode => Object.hash(runtimeType,userRole);
-
-@override
-String toString() {
-  return 'AuthState.success(userRole: $userRole)';
-}
-
-
+  @override
+  String toString() {
+    return 'AuthState.success(userRole: $userRole)';
+  }
 }
 
 /// @nodoc
-abstract mixin class $SuccessStateCopyWith<$Res> implements $AuthStateCopyWith<$Res> {
-  factory $SuccessStateCopyWith(SuccessState value, $Res Function(SuccessState) _then) = _$SuccessStateCopyWithImpl;
-@useResult
-$Res call({
- String userRole
-});
-
-
-
-
+abstract mixin class $SuccessStateCopyWith<$Res>
+    implements $AuthStateCopyWith<$Res> {
+  factory $SuccessStateCopyWith(
+          SuccessState value, $Res Function(SuccessState) _then) =
+      _$SuccessStateCopyWithImpl;
+  @useResult
+  $Res call({String userRole});
 }
+
 /// @nodoc
-class _$SuccessStateCopyWithImpl<$Res>
-    implements $SuccessStateCopyWith<$Res> {
+class _$SuccessStateCopyWithImpl<$Res> implements $SuccessStateCopyWith<$Res> {
   _$SuccessStateCopyWithImpl(this._self, this._then);
 
   final SuccessState _self;
   final $Res Function(SuccessState) _then;
 
-/// Create a copy of AuthState
-/// with the given fields replaced by the non-null parameter values.
-@pragma('vm:prefer-inline') $Res call({Object? userRole = null,}) {
-  return _then(SuccessState(
-userRole: null == userRole ? _self.userRole : userRole // ignore: cast_nullable_to_non_nullable
-as String,
-  ));
-}
-
-
+  /// Create a copy of AuthState
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  $Res call({
+    Object? userRole = null,
+  }) {
+    return _then(SuccessState(
+      userRole: null == userRole
+          ? _self.userRole
+          : userRole // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
 }
 
 /// @nodoc
-
 
 class ErrorState implements AuthState {
   const ErrorState({required this.error});
-  
 
- final  String error;
+  final String error;
 
-/// Create a copy of AuthState
-/// with the given fields replaced by the non-null parameter values.
-@JsonKey(includeFromJson: false, includeToJson: false)
-@pragma('vm:prefer-inline')
-$ErrorStateCopyWith<ErrorState> get copyWith => _$ErrorStateCopyWithImpl<ErrorState>(this, _$identity);
+  /// Create a copy of AuthState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @pragma('vm:prefer-inline')
+  $ErrorStateCopyWith<ErrorState> get copyWith =>
+      _$ErrorStateCopyWithImpl<ErrorState>(this, _$identity);
 
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is ErrorState &&
+            (identical(other.error, error) || other.error == error));
+  }
 
+  @override
+  int get hashCode => Object.hash(runtimeType, error);
 
-@override
-bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is ErrorState&&(identical(other.error, error) || other.error == error));
-}
-
-
-@override
-int get hashCode => Object.hash(runtimeType,error);
-
-@override
-String toString() {
-  return 'AuthState.error(error: $error)';
-}
-
-
+  @override
+  String toString() {
+    return 'AuthState.error(error: $error)';
+  }
 }
 
 /// @nodoc
-abstract mixin class $ErrorStateCopyWith<$Res> implements $AuthStateCopyWith<$Res> {
-  factory $ErrorStateCopyWith(ErrorState value, $Res Function(ErrorState) _then) = _$ErrorStateCopyWithImpl;
-@useResult
-$Res call({
- String error
-});
-
-
-
-
+abstract mixin class $ErrorStateCopyWith<$Res>
+    implements $AuthStateCopyWith<$Res> {
+  factory $ErrorStateCopyWith(
+          ErrorState value, $Res Function(ErrorState) _then) =
+      _$ErrorStateCopyWithImpl;
+  @useResult
+  $Res call({String error});
 }
+
 /// @nodoc
-class _$ErrorStateCopyWithImpl<$Res>
-    implements $ErrorStateCopyWith<$Res> {
+class _$ErrorStateCopyWithImpl<$Res> implements $ErrorStateCopyWith<$Res> {
   _$ErrorStateCopyWithImpl(this._self, this._then);
 
   final ErrorState _self;
   final $Res Function(ErrorState) _then;
 
-/// Create a copy of AuthState
-/// with the given fields replaced by the non-null parameter values.
-@pragma('vm:prefer-inline') $Res call({Object? error = null,}) {
-  return _then(ErrorState(
-error: null == error ? _self.error : error // ignore: cast_nullable_to_non_nullable
-as String,
-  ));
-}
-
-
+  /// Create a copy of AuthState
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  $Res call({
+    Object? error = null,
+  }) {
+    return _then(ErrorState(
+      error: null == error
+          ? _self.error
+          : error // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
 }
 
 // dart format on

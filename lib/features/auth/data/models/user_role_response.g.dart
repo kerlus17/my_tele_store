@@ -13,4 +13,7 @@ UserRoleResponse _$UserRoleResponseFromJson(Map<String, dynamic> json) =>
     );
 
 Map<String, dynamic> _$UserRoleResponseToJson(UserRoleResponse instance) =>
-    <String, dynamic>{'role': instance.userRole, 'id': instance.userId};
+    <String, dynamic>{
+      'role': instance.userRole,
+      'id': instance.userId,
+    };

@@ -25,7 +25,7 @@ class tele_store extends StatelessWidget {
         ..getSavedLanguage(),
       child: ValueListenableBuilder(
         valueListenable: ConnectivityController.instance.isconnected,
-        builder: (_, value, _) {
+        builder: (_, value, __) {
           if (value) {
             return ScreenUtilInit(
               designSize: const Size(375, 812),

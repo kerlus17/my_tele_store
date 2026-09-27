@@ -14,7 +14,9 @@ LoginResponse _$LoginResponseFromJson(Map<String, dynamic> json) =>
     );
 
 Map<String, dynamic> _$LoginResponseToJson(LoginResponse instance) =>
-    <String, dynamic>{'data': instance.data};
+    <String, dynamic>{
+      'data': instance.data,
+    };
 
 LoginDataModel _$LoginDataModelFromJson(Map<String, dynamic> json) =>
     LoginDataModel(
@@ -24,12 +26,14 @@ LoginDataModel _$LoginDataModelFromJson(Map<String, dynamic> json) =>
     );
 
 Map<String, dynamic> _$LoginDataModelToJson(LoginDataModel instance) =>
-    <String, dynamic>{'login': instance.login};
+    <String, dynamic>{
+      'login': instance.login,
+    };
 
 LoginModel _$LoginModelFromJson(Map<String, dynamic> json) => LoginModel(
-  accessToken: json['access_token'] as String?,
-  refreshToken: json['refresh_token'] as String?,
-);
+      accessToken: json['access_token'] as String?,
+      refreshToken: json['refresh_token'] as String?,
+    );
 
 Map<String, dynamic> _$LoginModelToJson(LoginModel instance) =>
     <String, dynamic>{
