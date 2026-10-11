@@ -12,26 +12,24 @@ GetAllUsersResponse _$GetAllUsersResponseFromJson(Map<String, dynamic> json) =>
     );
 
 Map<String, dynamic> _$GetAllUsersResponseToJson(
-        GetAllUsersResponse instance) =>
-    <String, dynamic>{
-      'data': instance.data,
-    };
+  GetAllUsersResponse instance,
+) => <String, dynamic>{'data': instance.data};
 
 UserData _$UserDataFromJson(Map<String, dynamic> json) => UserData(
-      (json['users'] as List<dynamic>)
-          .map((e) => UsersModel.fromJson(e as Map<String, dynamic>))
-          .toList(),
-    );
+  (json['users'] as List<dynamic>)
+      .map((e) => UsersModel.fromJson(e as Map<String, dynamic>))
+      .toList(),
+);
 
 Map<String, dynamic> _$UserDataToJson(UserData instance) => <String, dynamic>{
-      'users': instance.usersList,
-    };
+  'users': instance.usersList,
+};
 
 UsersModel _$UsersModelFromJson(Map<String, dynamic> json) => UsersModel(
-      json['name'] as String?,
-      json['email'] as String?,
-      json['id'] as String?,
-    );
+  json['name'] as String?,
+  json['email'] as String?,
+  json['id'] as String?,
+);
 
 Map<String, dynamic> _$UsersModelToJson(UsersModel instance) =>
     <String, dynamic>{
