@@ -5,6 +5,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:tele_store/core/app/bloc_observer.dart';
 import 'package:tele_store/core/app/env_variables.dart';
 import 'package:tele_store/core/di/injection_container.dart';
+import 'package:tele_store/core/serves/push_notifications/firebase_claud_messenging.dart';
 import 'package:tele_store/core/serves/shared_pref/shared_pref.dart';
 import 'package:tele_store/firebase_options.dart';
 import 'package:tele_store/tele_store.dart';
@@ -27,6 +28,8 @@ void main() async {
     DeviceOrientation.portraitDown,
     DeviceOrientation.portraitUp,
   ]);
+
+  await FirebaseCloudMessaging.instance.init();
 
   runApp(const tele_store());
 }

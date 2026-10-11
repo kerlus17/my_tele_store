@@ -23,6 +23,10 @@ import 'package:tele_store/features/admin/dashBoard/data/repos/dashBoard_repo.da
 import 'package:tele_store/features/admin/dashBoard/presentation/bloc/Products_number/products_number_bloc.dart';
 import 'package:tele_store/features/admin/dashBoard/presentation/bloc/Users_number/users_number_bloc.dart';
 import 'package:tele_store/features/admin/dashBoard/presentation/bloc/categories_number/categories_number_bloc.dart';
+import 'package:tele_store/features/admin/users/data/data_source/users_data_source.dart';
+import 'package:tele_store/features/admin/users/data/repo/users_repo.dart';
+import 'package:tele_store/features/admin/users/presentation/bloc/bloc/delete_user_bloc.dart';
+import 'package:tele_store/features/admin/users/presentation/bloc/get_all_users/get_all_users_bloc.dart';
 import 'package:tele_store/features/auth/data/data_source/auth_data_source.dart';
 import 'package:tele_store/features/auth/data/repos/auth_repos.dart';
 import 'package:tele_store/features/auth/presentation/bloc/bloc/auth_bloc.dart';
@@ -35,6 +39,7 @@ Future<void> setupInjection() async {
   await _initDashBoard();
   await _initCategoriesAdmin();
   await _initProductsAdmin();
+  await _initUsersAdmin();
 }
 
 Future<void> _initCore() async {
@@ -83,4 +88,12 @@ Future<void> _initProductsAdmin() async {
     ..registerFactory(() => CreateProductBloc(sl()))
     ..registerFactory(() => DeleteProductBloc(sl()))
     ..registerFactory(() => UpdateProductBloc(sl()));
+}
+
+Future<void> _initUsersAdmin() async {
+  sl
+    ..registerLazySingleton(() => UsersRepo(sl()))
+    ..registerLazySingleton(() => UsersDataSource(sl()))
+    ..registerFactory(() => GetAllUsersBloc(sl()))
+    ..registerFactory(() => DeleteUserBloc(sl()));
 }

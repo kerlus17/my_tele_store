@@ -9,6 +9,7 @@ import 'package:tele_store/features/admin/add_product/data/models/get_all_produc
 import 'package:tele_store/features/admin/dashBoard/data/models/categories_number_response.dart';
 import 'package:tele_store/features/admin/dashBoard/data/models/products_number_response.dart';
 import 'package:tele_store/features/admin/dashBoard/data/models/users_number_response.dart';
+import 'package:tele_store/features/admin/users/data/models/get_all_users_response.dart';
 import 'package:tele_store/features/auth/data/models/auth_login_response.dart';
 import 'package:tele_store/features/auth/data/models/sign_up_response.dart';
 import 'package:tele_store/features/auth/data/models/user_role_response.dart';
@@ -91,6 +92,18 @@ abstract class ApiService {
   
   @POST(graphql)
   Future<void> updateProduct(
+    @Body() Map<String, dynamic> mutation,
+  );
+
+  
+  @POST(graphql)
+  Future<GetAllUsersResponse> getAllUsers(
+    @Body() Map<String, dynamic> Query,
+  );
+  
+  
+  @POST(graphql)
+  Future<void> deleteUser(
     @Body() Map<String, dynamic> mutation,
   );
 }

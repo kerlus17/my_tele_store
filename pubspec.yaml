@@ -44,6 +44,7 @@ dependencies:
   flutter_bloc: ^9.1.1
   shared_preferences: ^2.5.5
   get_it: ^9.2.1
+  googleapis_auth: ^1.6.0
   
 
   # The following adds the Cupertino Icons font to your application.
@@ -62,6 +63,7 @@ dependencies:
   flutter_zoom_drawer: ^3.2.0
   cached_network_image: ^3.4.1
   shimmer: ^3.0.0
+  firebase_messaging: ^16.7.0
 
 dev_dependencies:
   flutter_test:

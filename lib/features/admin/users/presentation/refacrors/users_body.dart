@@ -1,0 +1,61 @@
+import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:tele_store/core/common/loading/empty_screen.dart';
+import 'package:tele_store/features/admin/users/presentation/bloc/get_all_users/get_all_users_bloc.dart';
+import 'package:tele_store/features/admin/users/presentation/widgets/search_for_users.dart';
+import 'package:tele_store/features/admin/users/presentation/widgets/table_for_users.dart';
+
+class UsersBody extends StatelessWidget {
+  const UsersBody({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: EdgeInsets.symmetric(horizontal: 10.w, vertical: 10.h),
+      child: Column(
+        children: [
+          const SearchForUsers(),
+          SizedBox(height: 20.h),
+          Flexible(
+            child: RefreshIndicator(
+              onRefresh: () async {
+                context.read<GetAllUsersBloc>().add(const FetchAllUsersEvent(isloading: true));
+              },
+              child: CustomScrollView(
+                slivers: [
+                  SliverToBoxAdapter(
+                    child: BlocBuilder<GetAllUsersBloc, GetAllUsersState>(
+                      builder: (context, state) {
+                        return state.when(  
+                          loading: () {
+                            return const Center(
+                              child: CircularProgressIndicator(
+                                color: Colors.white,
+                              ),
+                            );
+                          },
+                          success: (userList) {
+                            return TableForUsers(userList: userList);
+                          },
+                          searchUsers: (searchUser) {
+                            return TableForUsers(userList: searchUser);
+                          },
+                          empty: EmptyScreen.new,
+                          error: Text.new,
+                        );
+                      },
+                    ),
+                  ),
+                  SliverToBoxAdapter(
+                    child: SizedBox(height: 10.h),
+                  ),
+                ],
+              ),
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+}
