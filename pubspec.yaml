@@ -15,8 +15,8 @@ dependencies:
 
 
 #  flutter pub run build_runner build --delete-conflicting-outputs
-
-
+  flutter_svg: ^2.3.0
+  intl: ^0.20.3
   animate_do: ^5.1.0
   connectivity_plus: ^7.3.1
   flutter_dotenv: ^6.0.1
@@ -26,6 +26,7 @@ dependencies:
   shared_preferences: ^2.5.5
   get_it: ^9.2.1
   googleapis_auth: ^1.6.0
+  flutter_animate: ^4.5.2
   
   cupertino_icons: ^1.0.8
   firebase_core: ^4.14.0

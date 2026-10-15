@@ -12,6 +12,11 @@ import 'package:tele_store/features/admin/add_categories/presentation/bloc/craet
 import 'package:tele_store/features/admin/add_categories/presentation/bloc/delete_category/delete_category_bloc.dart';
 import 'package:tele_store/features/admin/add_categories/presentation/bloc/get_all_admin_categories/get_all_admin_categories_bloc.dart';
 import 'package:tele_store/features/admin/add_categories/presentation/bloc/update_category/update_category_bloc.dart';
+import 'package:tele_store/features/admin/add_notification/data/data_source/add_notification_data_source.dart';
+import 'package:tele_store/features/admin/add_notification/data/repo/add_notification_repo.dart';
+import 'package:tele_store/features/admin/add_notification/presentation/bloc/add_notification/add_notification_bloc.dart';
+import 'package:tele_store/features/admin/add_notification/presentation/bloc/get_all_notification_admin/get_all_notification_admin_bloc.dart';
+import 'package:tele_store/features/admin/add_notification/presentation/bloc/send_notification/send_notification_bloc.dart';
 import 'package:tele_store/features/admin/add_product/data/data_source/product_admin_data_source.dart';
 import 'package:tele_store/features/admin/add_product/data/repos/product_admin_repo.dart';
 import 'package:tele_store/features/admin/add_product/presentation/bloc/create_product/create_product_bloc.dart';
@@ -30,6 +35,10 @@ import 'package:tele_store/features/admin/users/presentation/bloc/get_all_users/
 import 'package:tele_store/features/auth/data/data_source/auth_data_source.dart';
 import 'package:tele_store/features/auth/data/repos/auth_repos.dart';
 import 'package:tele_store/features/auth/presentation/bloc/bloc/auth_bloc.dart';
+import 'package:tele_store/features/customer/main/presentaion/cubit/main_cubit.dart';
+import 'package:tele_store/features/customer/profile/data/data_source/profile_data_source.dart';
+import 'package:tele_store/features/customer/profile/data/repo/profile_repo.dart';
+import 'package:tele_store/features/customer/profile/presentation/bloc/profile/profile_bloc.dart';
 
 final GetIt sl = GetIt.instance;
 
@@ -40,6 +49,9 @@ Future<void> setupInjection() async {
   await _initCategoriesAdmin();
   await _initProductsAdmin();
   await _initUsersAdmin();
+  await _initAddNotification();
+  await _initMain();
+  await _initProfile();
 }
 
 Future<void> _initCore() async {
@@ -96,4 +108,24 @@ Future<void> _initUsersAdmin() async {
     ..registerLazySingleton(() => UsersDataSource(sl()))
     ..registerFactory(() => GetAllUsersBloc(sl()))
     ..registerFactory(() => DeleteUserBloc(sl()));
+}
+
+Future<void> _initAddNotification() async {
+  sl
+    ..registerFactory(AddNotificationBloc.new)
+    ..registerFactory(GetAllNotificationAdminBloc.new)
+    ..registerFactory(() => SendNotificationBloc(sl()))
+    ..registerLazySingleton(() => AddNotificationRepo(sl()))
+    ..registerLazySingleton(AddNotificationDataSource.new);
+}
+
+Future<void> _initMain() async {
+  sl..registerFactory(MainCubit.new);
+}
+
+Future<void> _initProfile() async {
+  sl
+    ..registerFactory(() => ProfileBloc(sl()))
+    ..registerLazySingleton(() => ProfileRepo(sl()))
+    ..registerLazySingleton(() => ProfileDataSource(sl()));
 }

@@ -567,7 +567,7 @@ String toString() {
 
 
 class SuccessState implements GetAllUsersState {
-  const SuccessState(final  List<UsersModel> response): _response = response;
+  const SuccessState(  List<UsersModel> response): _response = response;
   
 
  final  List<UsersModel> _response;
@@ -737,7 +737,7 @@ String toString() {
 
 
 class SearchUsersState implements GetAllUsersState {
-  const SearchUsersState(final  List<UsersModel> searchUser): _searchUser = searchUser;
+  const SearchUsersState( List<UsersModel> searchUser): _searchUser = searchUser;
   
 
  final  List<UsersModel> _searchUser;

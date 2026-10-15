@@ -8,7 +8,8 @@ import 'package:tele_store/features/admin/home_admin/presentation/screens/home_a
 import 'package:tele_store/features/auth/presentation/bloc/bloc/auth_bloc.dart';
 import 'package:tele_store/features/auth/presentation/screens/login_screen.dart';
 import 'package:tele_store/features/auth/presentation/screens/signup_screen.dart';
-import 'package:tele_store/features/customer/home_customer.dart';
+import 'package:tele_store/features/customer/main/presentaion/cubit/main_cubit.dart';
+import 'package:tele_store/features/customer/main/presentaion/screen/main_screen.dart';
 
 class AppRoutes {
   static const String login = 'login';
@@ -39,7 +40,12 @@ class AppRoutes {
       case homeAdmin:
         return BaseRoute(page: const HomeAdmin());
       case homeCustomer:
-        return BaseRoute(page: const HomeCustomer());
+        return BaseRoute(
+          page: BlocProvider(
+            create: (context) => sl<MainCubit>(),
+            child: const MainScreen(),
+          ),
+        );
 
       default:
         return BaseRoute(page: const PageUnderBuildScreen());

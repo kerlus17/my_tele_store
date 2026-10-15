@@ -11,6 +11,7 @@ import 'package:tele_store/core/serves/shared_pref/pref_keys.dart';
 import 'package:tele_store/core/serves/shared_pref/shared_pref.dart';
 import 'package:tele_store/core/style/fonts/font_family_helper.dart';
 import 'package:tele_store/core/style/fonts/font_weight_helper.dart';
+import 'package:tele_store/core/utils/app_logout.dart';
 import 'package:tele_store/features/admin/add_categories/presentation/screens/add_categories_screen.dart';
 import 'package:tele_store/features/admin/add_notification/presentation/screens/add_notification_screen.dart';
 import 'package:tele_store/features/admin/add_product/presentation/screens/add_product_screen.dart';
@@ -107,13 +108,27 @@ List<DrawerItemModel> adminDrawerList(BuildContext context) {
         Icons.exit_to_app,
         color: Colors.white,
       ),
-      title: const Text(
-        'Logout',
-        style: TextStyle(
-          color: Colors.white,
-          fontFamily: 'Poppins',
-          fontWeight: FontWeightHelper.bold,
-          fontSize: 17,
+      title: GestureDetector(
+        onTap: () {
+          CustomDialog.twoButtonDialog(
+            context: context,
+            textBody: 'Do you want log out?',
+            textButton1: 'Yes',
+            textButton2: 'No',
+            isLoading: false,
+            onPressed: () async {
+              await AppLogout().logout();
+            },
+          );
+        },
+        child: const Text(
+          'Logout',
+          style: TextStyle(
+            color: Colors.white,
+            fontFamily: 'Poppins',
+            fontWeight: FontWeightHelper.bold,
+            fontSize: 17,
+          ),
         ),
       ),
       page: const UserScreen(),

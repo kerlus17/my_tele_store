@@ -1,12 +1,16 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:tele_store/core/common/bottom_sheet/custom_bottom_sheet.dart';
 import 'package:tele_store/core/common/widgets/custom_button.dart';
 import 'package:tele_store/core/common/widgets/custom_text.dart';
+import 'package:tele_store/core/di/injection_container.dart';
 import 'package:tele_store/core/extentions/context_extension.dart';
 import 'package:tele_store/core/style/colors/colors_dark.dart';
 import 'package:tele_store/core/style/fonts/font_family_helper.dart';
 import 'package:tele_store/core/style/fonts/font_weight_helper.dart';
+import 'package:tele_store/features/admin/add_notification/presentation/bloc/add_notification/add_notification_bloc.dart';
+import 'package:tele_store/features/admin/add_notification/presentation/bloc/get_all_notification_admin/get_all_notification_admin_bloc.dart';
 import 'package:tele_store/features/admin/add_notification/presentation/widgets/create/create_notification_bottom_sheet.dart';
 
 class CreateNotification extends StatelessWidget {
@@ -29,7 +33,14 @@ class CreateNotification extends StatelessWidget {
           onPressed: () {
             CustomBottomSheet.showModalBottomSheetContainer(
               context: context,
-              widget: CreateNotificationBottomSheet(),
+              widget: BlocProvider(
+                create: (context) => sl<AddNotificationBloc>(),
+                child: CreateNotificationBottomSheet(),
+              ),whenComplete: () {
+                context.read<GetAllNotificationAdminBloc>().add(
+                      GetAllNotificationAdminEvent.fetchAll(loading: true),
+                    );
+              },
             );
           },
           backgroundColor: ColorsDark.blueDark,

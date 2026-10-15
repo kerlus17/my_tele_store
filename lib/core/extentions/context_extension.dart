@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:tele_store/core/style/theme/assets_extension.dart';
 import 'package:tele_store/core/style/theme/color_extention.dart';
 import 'package:tele_store/language/app_localizations.dart';
 
@@ -15,6 +16,9 @@ extension ContextExt on BuildContext {
       this,
     ).pushReplacementNamed(routeName, arguments: arguments);
   }
+
+MyAssets get assets => Theme.of(this).extension<MyAssets>()!;
+
 
   // style
 TextStyle get textStyle => Theme.of(this).textTheme.displaySmall!;

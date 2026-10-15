@@ -3,16 +3,23 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:tele_store/core/common/widgets/custom_container_linear_admin.dart';
 import 'package:tele_store/core/common/widgets/custom_text.dart';
 import 'package:tele_store/core/extentions/context_extension.dart';
+import 'package:tele_store/core/extentions/date_extension.dart';
 import 'package:tele_store/core/style/colors/colors_dark.dart';
 import 'package:tele_store/core/style/fonts/font_family_helper.dart';
 import 'package:tele_store/core/style/fonts/font_weight_helper.dart';
+import 'package:tele_store/features/admin/add_notification/data/models/add_notification_model.dart';
+import 'package:tele_store/features/admin/add_notification/presentation/widgets/delete/delete_notification.dart';
 import 'package:tele_store/features/admin/add_notification/presentation/widgets/edit/edit_notification.dart';
+import 'package:tele_store/features/admin/add_notification/presentation/widgets/send_notification.dart';
 
 class AddNotificationItem extends StatelessWidget {
   const AddNotificationItem({
+    required this.indexId, required this.notification,
     super.key,
   });
 
+  final AddNotificationModel notification;
+  final int indexId;
   @override
   Widget build(BuildContext context) {
     return CustomContainerLinearAdmin(
@@ -24,29 +31,30 @@ class AddNotificationItem extends StatelessWidget {
           children: [
             const Spacer(),
             notificationInfo(
-                title: "Notification Title:", body: "Notification body"),
+              title: "Notification Title:",
+              body: notification.title,
+            ),
             const Spacer(),
             notificationInfo(
-                title: "Notification Title:", body: "Notification body"),
+              title: "Notification Title:",
+              body: notification.body,
+            ),
             const Spacer(),
-            notificationInfo(title: "Create At:", body: "2023-06-20 12:00:00"),
+            notificationInfo(
+              title: 'Create At:',
+              body: notification.createdAt.getFormatDayMonthYear(),
+            ),
             const Spacer(),
             Row(
               mainAxisAlignment: MainAxisAlignment.end,
               children: [
-                Icon(
-                  Icons.delete,
-                  color: Colors.red,
-                ),
+                DeleteNotification(notification: notification),
                 SizedBox(width: 40.w),
-                EditNotification(),
+                EditNotification(notification: notification),
                 SizedBox(width: 40.w),
-                Icon(
-                  Icons.send,
-                  color: Colors.green,
-                ),
+                SendNotification(notification: notification,indexId:indexId ,),
               ],
-            )
+            ),
           ],
         ),
       ),

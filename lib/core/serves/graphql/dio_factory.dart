@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:pretty_dio_logger/pretty_dio_logger.dart';
 import 'package:tele_store/core/serves/shared_pref/pref_keys.dart';
 import 'package:tele_store/core/serves/shared_pref/shared_pref.dart';
+import 'package:tele_store/core/utils/app_logout.dart';
 
 class DioFactory {
   DioFactory._();
@@ -32,10 +33,27 @@ class DioFactory {
       return dio!;
     }
   }
+static void addDioInterceptor() {
+  dio?.interceptors.add(
+    PrettyDioLogger(
+      request: false,
+      compact: false,
+    ),
+  );
+  dio?.interceptors.add(
+    InterceptorsWrapper(
+      onRequest: (options, handler) {
+        options.headers['Authorization'] =
+            'Bearer ${SharedPref().getString(prefKeys.accessToken)}';
 
-  static void addDioInterceptor() {
-    dio?.interceptors.add(
-      PrettyDioLogger(request: false, compact: false, requestBody: true),
-    );
-  }
+        return handler.next(options);
+      },
+      onError: (error, handler) async {
+        if (error.response?.statusCode == 400 ||error.response?.statusCode == 401) {
+          await AppLogout().logout();
+        }
+      },
+    ),
+  );
+}
 }
