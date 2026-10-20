@@ -10,12 +10,14 @@ import 'package:tele_store/features/auth/presentation/screens/login_screen.dart'
 import 'package:tele_store/features/auth/presentation/screens/signup_screen.dart';
 import 'package:tele_store/features/customer/main/presentaion/cubit/main_cubit.dart';
 import 'package:tele_store/features/customer/main/presentaion/screen/main_screen.dart';
+import 'package:tele_store/features/customer/profile/presentation/widgets/custom_web_view.dart';
 
 class AppRoutes {
   static const String login = 'login';
   static const String signup = 'signup';
   static const String homeAdmin = 'HomeAdmin';
   static const String homeCustomer = 'HomeCustomer';
+  static const String webView = 'webView';
 
   static Route<void> onGenerateRoute(RouteSettings settings) {
     final args = settings.arguments;
@@ -44,6 +46,12 @@ class AppRoutes {
           page: BlocProvider(
             create: (context) => sl<MainCubit>(),
             child: const MainScreen(),
+          ),
+        );
+      case webView:
+        return BaseRoute(
+          page: CustomWebView(
+            url: args! as String,
           ),
         );
 

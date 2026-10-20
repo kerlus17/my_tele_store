@@ -3,6 +3,7 @@ import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
 import 'package:googleapis_auth/auth_io.dart' as auth;
 
+
 class FirebaseCloudMessaging {
   FirebaseCloudMessaging._();
   static final FirebaseCloudMessaging instance = FirebaseCloudMessaging._();

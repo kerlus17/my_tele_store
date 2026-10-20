@@ -30,21 +30,23 @@ class MainScreen extends StatelessWidget {
         ),
         child: Column(
           children: [
-            BlocBuilder<MainCubit, MainState>(
-              builder: (context, state) {
-                final cubit = context.read<MainCubit>();
-
-                if (cubit.navBarEnum == NavBarEnum.categories) {
-                  return const CategoriesScreen();
-                } else if (cubit.navBarEnum == NavBarEnum.favourite) {
-                  return const FavouriteScreen();
-                } else if (cubit.navBarEnum == NavBarEnum.profile) {
-                  return const ProfileScrren();
-                }
-                return HomeScreen();
-              },
+            Expanded(
+              child: BlocBuilder<MainCubit, MainState>(
+                builder: (context, state) {
+                  final cubit = context.read<MainCubit>();
+              
+                  if (cubit.navBarEnum == NavBarEnum.categories) {
+                    return const CategoriesScreen();
+                  } else if (cubit.navBarEnum == NavBarEnum.favourite) {
+                    return const FavouriteScreen();
+                  } else if (cubit.navBarEnum == NavBarEnum.profile) {
+                    return const ProfileScrren();
+                  }
+                  return HomeScreen();
+                },
+              ),
             ),
-
+            
             MainBottomNavBar(),
           ],
         ),

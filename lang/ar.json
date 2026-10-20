@@ -30,6 +30,10 @@
     "log_out_from_app": "هل تريد تسجيل الخروج؟",
     "yes": "نعم",
     "no": "لا",
-    "dark_mode": "Dark Mode",
-    "lang_code": "العربية"
+    "dark_mode": "الوشع المظلم",
+    "lang_code": "العربية",
+     "notification": "الاشعارات",
+    "subscribe_to_notification": "لقد تم تفعيل الاشعارات",
+    "unsubscribe_to_notification": "لقد تم الغاء تفعيل الاشعارات"
+
 }
