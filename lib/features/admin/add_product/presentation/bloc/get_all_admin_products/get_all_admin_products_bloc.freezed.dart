@@ -489,7 +489,7 @@ String toString() {
 
 
 class SuccessState implements GetAllAdminProductsState {
-  const SuccessState({required   List<ProductGetAllModel> productList}): _productList = productList;
+  const SuccessState({required  List<ProductGetAllModel> productList}): _productList = productList;
   
 
  final  List<ProductGetAllModel> _productList;

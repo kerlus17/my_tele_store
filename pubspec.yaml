@@ -47,6 +47,7 @@ dependencies:
   hive_ce_flutter: ^2.1.0
   webview_flutter: ^4.14.1
   package_info_plus: ^10.2.2
+  carousel_slider: ^5.1.2
 
 dev_dependencies:
   flutter_test:

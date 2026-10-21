@@ -13,6 +13,7 @@ import 'package:tele_store/features/admin/users/data/models/get_all_users_respon
 import 'package:tele_store/features/auth/data/models/auth_login_response.dart';
 import 'package:tele_store/features/auth/data/models/sign_up_response.dart';
 import 'package:tele_store/features/auth/data/models/user_role_response.dart';
+import 'package:tele_store/features/customer/home/data/models/banner_response.dart';
 
 part 'api_service.g.dart';
 
@@ -89,21 +90,22 @@ abstract class ApiService {
     @Body() Map<String, dynamic> mutation,
   );
 
-  
   @POST(graphql)
   Future<void> updateProduct(
     @Body() Map<String, dynamic> mutation,
   );
 
-  
   @POST(graphql)
   Future<GetAllUsersResponse> getAllUsers(
     @Body() Map<String, dynamic> Query,
   );
-  
-  
+
   @POST(graphql)
   Future<void> deleteUser(
+    @Body() Map<String, dynamic> mutation,
+  );
+  @POST(graphql)
+  Future<BannersResponse> getBunner(
     @Body() Map<String, dynamic> mutation,
   );
 }

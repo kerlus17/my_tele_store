@@ -737,7 +737,7 @@ String toString() {
 
 
 class SearchUsersState implements GetAllUsersState {
-  const SearchUsersState( List<UsersModel> searchUser): _searchUser = searchUser;
+  const SearchUsersState(List<UsersModel> searchUser): _searchUser = searchUser;
   
 
  final  List<UsersModel> _searchUser;
