@@ -37,6 +37,7 @@ import 'package:tele_store/features/auth/data/repos/auth_repos.dart';
 import 'package:tele_store/features/auth/presentation/bloc/bloc/auth_bloc.dart';
 import 'package:tele_store/features/customer/home/data/data_source/home_data_source.dart';
 import 'package:tele_store/features/customer/home/data/repo/home_repo.dart';
+import 'package:tele_store/features/customer/home/presentation/bloc/get_all_categories/get_all_categories_bloc.dart';
 import 'package:tele_store/features/customer/home/presentation/bloc/get_bunner/get_bunner_bloc.dart';
 import 'package:tele_store/features/customer/main/presentaion/cubit/main_cubit.dart';
 import 'package:tele_store/features/customer/profile/data/data_source/profile_data_source.dart';
@@ -138,5 +139,6 @@ Future<void> _initHome() async {
   sl
     ..registerFactory(() => GetBunnerBloc(sl()))
     ..registerLazySingleton(() => HomeRepo(sl()))
-    ..registerLazySingleton(() => HomeDataSource(sl()));
+    ..registerLazySingleton(() => HomeDataSource(sl()))
+    ..registerFactory(() => GetAllCategoriesBloc(sl()));
 }

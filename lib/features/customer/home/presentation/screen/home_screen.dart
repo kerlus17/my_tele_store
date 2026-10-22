@@ -4,6 +4,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:tele_store/core/common/animation/animate_do.dart';
 import 'package:tele_store/core/di/injection_container.dart';
 import 'package:tele_store/core/extentions/context_extension.dart';
+import 'package:tele_store/features/customer/home/presentation/bloc/get_all_categories/get_all_categories_bloc.dart';
 import 'package:tele_store/features/customer/home/presentation/bloc/get_bunner/get_bunner_bloc.dart';
 import 'package:tele_store/features/customer/home/presentation/refactor/home_body.dart';
 
@@ -35,7 +36,12 @@ class _HomeScreenState extends State<HomeScreen> {
       providers: [
         BlocProvider(
           create: (context) =>
-              sl<GetBunnerBloc>()..add(GetBunnerEvent.fetchBunner()),
+              sl<GetBunnerBloc>()..add(const GetBunnerEvent.fetchBunner()),
+        ),
+        BlocProvider(
+          create: (context) =>
+              sl<GetAllCategoriesBloc>()
+                ..add(const GetAllCategoriesEvent.fetchCategories()),
         ),
       ],
 

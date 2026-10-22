@@ -16,7 +16,7 @@ class CategoriesAdminRepo {
 
   Future<ApiResult<CategoriesGetAllResponse>> getAllCategoriesAdmin() async {
     try {
-      final response = await _dataSource.getAllCategories();
+      final response = await _dataSource.getAllCategoriesAdmin();
       return ApiResult.success(response);
     } catch (e) {
       return ApiResult.failure(errmsg);

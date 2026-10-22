@@ -10,7 +10,7 @@ class CategoriesAdminDataSource {
 
   final ApiService _graphql;
 
-  Future<CategoriesGetAllResponse> getAllCategories() async {
+  Future<CategoriesGetAllResponse> getAllCategoriesAdmin() async {
     final response = await _graphql.grtAllCategories(
       CategoriesQueries().getAllCategoriessQuery(),
     );
