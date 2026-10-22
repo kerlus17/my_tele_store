@@ -1,7 +1,9 @@
 import 'package:tele_store/core/serves/graphql/api_service.dart';
 import 'package:tele_store/core/serves/graphql/qraphql_queries/admin/categories_queries.dart';
+import 'package:tele_store/core/serves/graphql/qraphql_queries/admin/product_quires.dart';
 import 'package:tele_store/core/serves/graphql/qraphql_queries/customer/home_queries.dart';
 import 'package:tele_store/features/admin/add_categories/data/models/get_all_categories_response.dart';
+import 'package:tele_store/features/admin/add_product/data/models/get_all_product_response.dart';
 import 'package:tele_store/features/customer/home/data/models/banner_response.dart';
 
 class HomeDataSource {
@@ -22,4 +24,12 @@ class HomeDataSource {
     );
     return response;
   }
+
+   Future<GetAllProductResponse> getAllProducts() async {
+    final response = await _graphql.getAllProduct(
+      ProductQuires().getAllProductsQuery(),
+    );
+    return response;
+  }
+
 }
