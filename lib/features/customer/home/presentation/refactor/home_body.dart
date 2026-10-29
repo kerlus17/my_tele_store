@@ -5,6 +5,7 @@ import 'package:tele_store/core/common/loading/empty_screen.dart';
 import 'package:tele_store/core/common/loading/loading_shimmer.dart';
 import 'package:tele_store/core/common/widgets/custom_button.dart';
 import 'package:tele_store/core/extentions/context_extension.dart';
+import 'package:tele_store/core/routes/app_routes.dart';
 import 'package:tele_store/features/customer/home/presentation/bloc/get_all_categories/get_all_categories_bloc.dart';
 import 'package:tele_store/features/customer/home/presentation/bloc/get_all_products/get_all_products_bloc.dart';
 import 'package:tele_store/features/customer/home/presentation/bloc/get_bunner/get_bunner_bloc.dart';
@@ -98,15 +99,17 @@ class HomeBody extends StatelessWidget {
               },
             ),
           ),
-          SizedBox(
-            height: 20.h,
+          SliverToBoxAdapter(
+            child: SizedBox(
+              height: 20.h,
+            ),
           ),
 
-          BlocBuilder<GetAllProductsBloc, GetAllProductsState>(
-            builder: (context, state) {
-              if (context.read<GetAllProductsBloc>().isProductsLessThan10) {
-                return SliverToBoxAdapter(
-                  child: Padding(
+          SliverToBoxAdapter(
+            child: BlocBuilder<GetAllProductsBloc, GetAllProductsState>(
+              builder: (context, state) {
+                if (context.read<GetAllProductsBloc>().isProductsLessThan10) {
+                  return Padding(
                     padding: EdgeInsets.symmetric(horizontal: 15.w),
                     child: CustomButton(
                       height: 50.h,
@@ -116,14 +119,16 @@ class HomeBody extends StatelessWidget {
                       width: MediaQuery.of(context).size.width,
                       backgroundColor: context.color.bluePinkDark,
                       text: context.translate(LangKeys.view_all),
-                      onPressed: () {},
+                      onPressed: () {
+                        context.pushName(AppRoutes.productsViewAll);
+                      },
                     ),
-                  ),
-                );
-              } else {
-                return SizedBox.shrink();
-              }
-            },
+                  );
+                } else {
+                  return SizedBox.shrink();
+                }
+              },
+            ),
           ),
         ],
       ),

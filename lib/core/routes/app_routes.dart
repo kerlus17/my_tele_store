@@ -8,8 +8,12 @@ import 'package:tele_store/features/admin/home_admin/presentation/screens/home_a
 import 'package:tele_store/features/auth/presentation/bloc/bloc/auth_bloc.dart';
 import 'package:tele_store/features/auth/presentation/screens/login_screen.dart';
 import 'package:tele_store/features/auth/presentation/screens/signup_screen.dart';
+import 'package:tele_store/features/customer/categories/presentation/screen/categories_screen.dart';
+import 'package:tele_store/features/customer/category/presentation/screen/category_screen.dart';
 import 'package:tele_store/features/customer/main/presentaion/cubit/main_cubit.dart';
 import 'package:tele_store/features/customer/main/presentaion/screen/main_screen.dart';
+import 'package:tele_store/features/customer/product_details/presentation/screen/product_details_screen.dart';
+import 'package:tele_store/features/customer/products_view_all/presentation/screen/products_view_all_screen.dart';
 import 'package:tele_store/features/customer/profile/presentation/widgets/custom_web_view.dart';
 
 class AppRoutes {
@@ -18,6 +22,9 @@ class AppRoutes {
   static const String homeAdmin = 'HomeAdmin';
   static const String homeCustomer = 'HomeCustomer';
   static const String webView = 'webView';
+  static const String Productdetails = 'ProductDetailsScreen';
+  static const String category = 'category';
+  static const String productsViewAll = 'productsViewAll';
 
   static Route<void> onGenerateRoute(RouteSettings settings) {
     final args = settings.arguments;
@@ -41,6 +48,12 @@ class AppRoutes {
         );
       case homeAdmin:
         return BaseRoute(page: const HomeAdmin());
+      case category:
+        return BaseRoute(
+          page: CategoryScreen(
+            categoryInfo: args! as ({int categoryId, String categoryName}),
+          ),
+        );
       case homeCustomer:
         return BaseRoute(
           page: BlocProvider(
@@ -53,6 +66,17 @@ class AppRoutes {
           page: CustomWebView(
             url: args! as String,
           ),
+        );
+
+      case Productdetails:
+        return BaseRoute(
+          page: ProductDetailsScreen(
+            productId: args! as int,
+          ),
+        );
+      case productsViewAll:
+        return BaseRoute(
+          page: ProductsViewAllScreen(),
         );
 
       default:

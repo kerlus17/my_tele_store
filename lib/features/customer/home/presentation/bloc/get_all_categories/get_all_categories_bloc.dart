@@ -27,7 +27,7 @@ class GetAllCategoriesBloc
     result.when(
       success: (data) {
         if (data.categoriesGetAlls.isEmpty) {
-          emit(const .empty());
+          emit(const GetAllCategoriesState.empty());
         } else {
           emit(
             GetAllCategoriesState.success(categories: data.categoriesGetAlls),

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:tele_store/core/common/widgets/custom_product_item.dart';
 import 'package:tele_store/features/admin/add_product/data/models/get_all_product_response.dart';
-import 'package:tele_store/features/customer/home/presentation/widgets/products/product_item.dart';
 
 class ProductsList extends StatelessWidget {
   const ProductsList({required this.products, super.key});
@@ -23,7 +23,8 @@ class ProductsList extends StatelessWidget {
           childAspectRatio: 165 / 250,
         ),
         itemBuilder: (context, index) {
-          return ProductItem(
+          return CustomProductItem(
+            productid: int.parse(products[index].id ?? '0'),
             imgUrl: products[index].images!.first,
             title: products[index].title ?? '',
             price: products[index].price ?? 0,

@@ -2,13 +2,17 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:tele_store/core/common/widgets/custom_container_linear_admin.dart';
+import 'package:tele_store/core/common/widgets/custom_favourite_button.dart';
+import 'package:tele_store/core/common/widgets/custom_share_button.dart';
 import 'package:tele_store/core/common/widgets/custom_text.dart';
 import 'package:tele_store/core/extentions/context_extension.dart';
 import 'package:tele_store/core/extentions/string_extension.dart';
+import 'package:tele_store/core/routes/app_routes.dart';
 import 'package:tele_store/core/style/fonts/font_weight_helper.dart';
 
-class ProductItem extends StatelessWidget {
-  const ProductItem({
+class CustomProductItem extends StatelessWidget {
+  const CustomProductItem({
+    required this.productid,
     required this.title,
     required this.categoryName,
     required this.price,
@@ -20,11 +24,14 @@ class ProductItem extends StatelessWidget {
   final String categoryName;
   final String title;
   final double price;
+  final int productid;
 
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () {},
+      onTap: () {
+        context.pushName(AppRoutes.Productdetails, arguments: productid);
+      },
       child: CustomContainerLinearAdmin(
         height: 250.h,
         width: 165.w,
@@ -36,23 +43,8 @@ class ProductItem extends StatelessWidget {
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  IconButton(
-                    onPressed: () {},
-                    padding: EdgeInsets.zero,
-                    icon: Icon(
-                      Icons.share,
-                      color: context.color.textColor,
-                    ),
-                  ),
-
-                  IconButton(
-                    onPressed: () {},
-                    padding: EdgeInsets.zero,
-                    icon: Icon(
-                      Icons.favorite_outline,
-                      color: context.color.textColor,
-                    ),
-                  ),
+                  CustomShareButton(size: 20),
+                  CustomFavoriteButton(size: 20),
                 ],
               ),
               Flexible(

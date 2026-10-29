@@ -35,12 +35,18 @@ import 'package:tele_store/features/admin/users/presentation/bloc/get_all_users/
 import 'package:tele_store/features/auth/data/data_source/auth_data_source.dart';
 import 'package:tele_store/features/auth/data/repos/auth_repos.dart';
 import 'package:tele_store/features/auth/presentation/bloc/bloc/auth_bloc.dart';
+import 'package:tele_store/features/customer/category/data/data_source/category_data_source.dart';
+import 'package:tele_store/features/customer/category/data/repo/category_repo.dart';
+import 'package:tele_store/features/customer/category/presentation/bloc/get_category/get_category_bloc.dart';
 import 'package:tele_store/features/customer/home/data/data_source/home_data_source.dart';
 import 'package:tele_store/features/customer/home/data/repo/home_repo.dart';
 import 'package:tele_store/features/customer/home/presentation/bloc/get_all_categories/get_all_categories_bloc.dart';
 import 'package:tele_store/features/customer/home/presentation/bloc/get_all_products/get_all_products_bloc.dart';
 import 'package:tele_store/features/customer/home/presentation/bloc/get_bunner/get_bunner_bloc.dart';
 import 'package:tele_store/features/customer/main/presentaion/cubit/main_cubit.dart';
+import 'package:tele_store/features/customer/product_details/data/data_source/product_details_data_source.dart';
+import 'package:tele_store/features/customer/product_details/data/repo/product_details_repo.dart';
+import 'package:tele_store/features/customer/product_details/presentation/bloc/product_details/product_details_bloc.dart';
 import 'package:tele_store/features/customer/profile/data/data_source/profile_data_source.dart';
 import 'package:tele_store/features/customer/profile/data/repo/profile_repo.dart';
 import 'package:tele_store/features/customer/profile/presentation/bloc/profile/profile_bloc.dart';
@@ -58,6 +64,8 @@ Future<void> setupInjection() async {
   await _initMain();
   await _initProfile();
   await _initHome();
+  await _initCategory();
+  await _initProductDetails();
 }
 
 Future<void> _initCore() async {
@@ -143,4 +151,18 @@ Future<void> _initHome() async {
     ..registerLazySingleton(() => HomeDataSource(sl()))
     ..registerFactory(() => GetAllCategoriesBloc(sl()))
     ..registerFactory(() => GetAllProductsBloc(sl()));
+}
+
+Future<void> _initProductDetails() async {
+  sl
+    ..registerFactory(() => ProductDetailsBloc(sl()))
+    ..registerLazySingleton(() => ProductDetailsRepo(sl()))
+    ..registerLazySingleton(() => ProductDetailsDataSource(sl()));
+}
+
+Future<void> _initCategory() async {
+  sl
+    ..registerFactory(() => GetCategoryBloc(sl()))
+    ..registerLazySingleton(() => CatgeoryRepo(sl()))
+    ..registerLazySingleton(() => CatgeoryDataSource(sl()));
 }

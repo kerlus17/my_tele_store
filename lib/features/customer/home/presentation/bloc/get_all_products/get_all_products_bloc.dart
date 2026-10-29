@@ -29,7 +29,7 @@ class GetAllProductsBloc
         isProductsLessThan10 = data.productGetAllList.length <= 10;
 
         if (data.productGetAllList.isEmpty) {
-          emit(const .empty());
+          emit(const GetAllProductsState.empty());
         } else {
           emit(
             GetAllProductsState.success(productsList: data.productGetAllList),
