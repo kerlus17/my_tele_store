@@ -34,7 +34,7 @@ class MainScreen extends StatelessWidget {
               child: BlocBuilder<MainCubit, MainState>(
                 builder: (context, state) {
                   final cubit = context.read<MainCubit>();
-              
+
                   if (cubit.navBarEnum == NavBarEnum.categories) {
                     return const CategoriesScreen();
                   } else if (cubit.navBarEnum == NavBarEnum.favourite) {
@@ -42,11 +42,12 @@ class MainScreen extends StatelessWidget {
                   } else if (cubit.navBarEnum == NavBarEnum.profile) {
                     return const ProfileScrren();
                   }
+
                   return HomeScreen();
                 },
               ),
             ),
-            
+
             MainBottomNavBar(),
           ],
         ),

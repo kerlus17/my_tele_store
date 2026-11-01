@@ -1,15 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:tele_store/features/customer/favourite/presentation/refactor/favourite_body.dart';
 
 class FavouriteScreen extends StatelessWidget {
   const FavouriteScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return Center(
-      child: Text(
-        'Profile Screen',
-        style: TextStyle(color: Colors.white, fontSize: 20),
-      ),
-    );
+    return  FavouriteBody();
   }
 }

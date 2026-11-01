@@ -7,21 +7,23 @@ class ProductDetailsQueries {
 
   static const ProductDetailsQueries _instance = ProductDetailsQueries._();
 
- Map<String, dynamic> getProductDetailsMapQuery({required int id}) {
-  return {
-    'query': '''
-      query GetProduct(\$id: ID!) {
-        product(id: \$id) {
+  Map<String, dynamic> getProductDetailsMapQuery({required int id}) {
+    return {
+      'query':
+          '''
+      {
+        product(id: $id) {
+          id
           title
           price
           images
           description
+          category{
+            name
+          }
         }
-      }
+      },
     ''',
-    'variables': {
-      'id': id,
-    },
-  };
-}
+    };
+  }
 }

@@ -6,7 +6,6 @@ import 'package:tele_store/core/common/widgets/custom_product_item.dart';
 import 'package:tele_store/core/extentions/context_extension.dart';
 import 'package:tele_store/features/customer/search/presentation/bloc/search/search_bloc.dart';
 import 'package:tele_store/features/customer/search/presentation/widgets/filter_buttons.dart';
-import 'package:tele_store/features/customer/search/presentation/widgets/search_for_data_icon.dart';
 
 class SearchBody extends StatelessWidget {
   const new({super.key});
@@ -19,7 +18,6 @@ class SearchBody extends StatelessWidget {
         children: [
           FilterButtons(),
           SizedBox(height: 20.h),
-         
 
           BlocBuilder<SearchBloc, SearchState>(
             builder: (context, state) {

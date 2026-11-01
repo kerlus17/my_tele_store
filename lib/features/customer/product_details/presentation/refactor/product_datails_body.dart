@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:tele_store/core/common/widgets/custom_favourite_button.dart';
 import 'package:tele_store/core/common/widgets/custom_share_button.dart';
 import 'package:tele_store/core/common/widgets/custom_text.dart';
 import 'package:tele_store/core/extentions/context_extension.dart';
 import 'package:tele_store/core/style/fonts/font_weight_helper.dart';
+import 'package:tele_store/features/customer/favourite/presentation/cubit/favourite/favourite_cubit.dart';
 import 'package:tele_store/features/customer/product_details/data/models/product_details_response.dart';
 import 'package:tele_store/features/customer/product_details/presentation/widgets/product_details_image_slider.dart';
 
@@ -25,7 +27,26 @@ class ProductDatailsBody extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 CustomShareButton(size: 30),
-                CustomFavoriteButton(size: 30),
+                BlocBuilder<FavouriteCubit, FavouriteState>(
+                  builder: (context, state) {
+                    return CustomFavoriteButton(
+                      size: 20,
+                      isFavorites: context.read<FavouriteCubit>().isFavourite(
+                        productDetailsmodel.id.toString(),
+                      ),
+                      onTap: () async {
+                        await context.read<FavouriteCubit>().manageFavourite(
+                          categoryName:
+                              productDetailsmodel.category?.name ?? '',
+                          productId: productDetailsmodel.id.toString(),
+                          image: productDetailsmodel.images.first ,
+                          price: productDetailsmodel.price.toString(),
+                          title: productDetailsmodel.title ?? '',
+                        );
+                      },
+                    );
+                  },
+                ),
               ],
             ),
             SizedBox(

@@ -1,7 +1,7 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 
-
 part 'product_details_response.g.dart';
+
 @JsonSerializable()
 class ProductDetailsResponse {
   ProductDetailsResponse(this.data);
@@ -25,13 +25,32 @@ class ProductDetailsData {
 
 @JsonSerializable()
 class ProductDetailsModel {
-  ProductDetailsModel(this.title, this.price, this.images, this.description);
+  ProductDetailsModel(
+    this.title,
+    this.price,
+    this.images,
+    this.description,
+    this.id,
+    this.category,
+  );
 
   factory ProductDetailsModel.fromJson(Map<String, dynamic> json) =>
       _$ProductDetailsModelFromJson(json);
 
   final String? title;
+  final String? id;
   final double? price;
   final List<String> images;
   final String? description;
+  final CategoryDateilaModel? category;
+}
+
+@JsonSerializable()
+class CategoryDateilaModel {
+  CategoryDateilaModel(this.name);
+
+  factory CategoryDateilaModel.fromJson(Map<String, dynamic> json) =>
+      _$CategoryDateilaModelFromJson(json);
+
+  final String name;
 }
