@@ -8,7 +8,7 @@ part of 'add_favourite_model.dart';
 
 class AddFavouriteModelAdapter extends TypeAdapter<AddFavouriteModel> {
   @override
-  final typeId = 0;
+  final typeId = 1;
 
   @override
   AddFavouriteModel read(BinaryReader reader) {

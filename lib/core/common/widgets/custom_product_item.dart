@@ -45,7 +45,11 @@ class CustomProductItem extends StatelessWidget {
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  CustomShareButton(size: 20),
+                  CustomShareButton(
+                    size: 20,
+                    productId: productid.toString(),
+                    productTitle: title,
+                  ),
                   BlocBuilder<FavouriteCubit, FavouriteState>(
                     builder: (context, state) {
                       return CustomFavoriteButton(

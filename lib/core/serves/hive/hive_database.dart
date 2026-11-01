@@ -15,6 +15,7 @@ class HiveDatabase {
   Future<void> setup() async {
     await Hive.initFlutter();
     Hive.registerAdapter(AddNotificationModelAdapter());
+    Hive.registerAdapter(AddFavouriteModelAdapter());
     notificationBox = await Hive.openBox<AddNotificationModel>(
       'notifications_box',
     );

@@ -28,6 +28,7 @@ class MainCustomerAppBar extends StatelessWidget
           final cubit = context.read<MainCubit>();
           if (cubit.navBarEnum == NavBarEnum.home) {
             return Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 CustomFadeInRight(
                   duration: 800,
@@ -54,16 +55,18 @@ class MainCustomerAppBar extends StatelessWidget
               ],
             );
           } else if (cubit.navBarEnum == NavBarEnum.favourite) {
-            return CustomFadeInRight(
-              duration: 800,
-              child: TextApp(
-                text: 'Your Favorite',
-                theme: context.textStyle.copyWith(
-                  fontSize: 20.sp,
-                  fontWeight: FontWeightHelper.bold,
-                  color: context.color.textColor,
-                ),
-              ), // TextApp
+            return Center(
+              child: CustomFadeInRight(
+                duration: 800,
+                child: TextApp(
+                  text: 'Your Favorite',
+                  theme: context.textStyle.copyWith(
+                    fontSize: 20.sp,
+                    fontWeight: FontWeightHelper.bold,
+                    color: context.color.textColor,
+                  ),
+                ), // TextApp
+              ),
             ); // CustomFadeInRight
           } else {
             return SizedBox.shrink();

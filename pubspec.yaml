@@ -50,6 +50,9 @@ dependencies:
   carousel_slider: ^5.1.2
   bloc_concurrency: ^0.3.0
   equatable: ^3.0.0
+  app_links: ^7.0.0
+  share_plus: ^13.3.1
+  flutter_local_notifications: ^22.3.3
 
 dev_dependencies:
   flutter_test:

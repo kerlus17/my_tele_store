@@ -26,7 +26,11 @@ class ProductDatailsBody extends StatelessWidget {
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                CustomShareButton(size: 30),
+                CustomShareButton(
+                  size: 30,
+                  productId: productDetailsmodel.id.toString(),
+                  productTitle: productDetailsmodel.title ?? '',
+                ),
                 BlocBuilder<FavouriteCubit, FavouriteState>(
                   builder: (context, state) {
                     return CustomFavoriteButton(
@@ -39,7 +43,7 @@ class ProductDatailsBody extends StatelessWidget {
                           categoryName:
                               productDetailsmodel.category?.name ?? '',
                           productId: productDetailsmodel.id.toString(),
-                          image: productDetailsmodel.images.first ,
+                          image: productDetailsmodel.images.first,
                           price: productDetailsmodel.price.toString(),
                           title: productDetailsmodel.title ?? '',
                         );

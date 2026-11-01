@@ -2,7 +2,7 @@ import 'package:hive_ce/hive.dart';
 
 part 'add_favourite_model.g.dart';
 
-@HiveType(typeId: 0)
+@HiveType(typeId: 1)
 class AddFavouriteModel extends HiveObject {
   @HiveField(0)
   String title;
