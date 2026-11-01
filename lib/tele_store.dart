@@ -10,6 +10,7 @@ import 'package:tele_store/core/routes/app_routes.dart';
 import 'package:tele_store/core/serves/shared_pref/pref_keys.dart';
 import 'package:tele_store/core/serves/shared_pref/shared_pref.dart';
 import 'package:tele_store/core/style/theme/app_theme.dart' as theme;
+import 'package:tele_store/features/customer/favourite/presentation/cubit/favourite/favourite_cubit.dart';
 import 'package:tele_store/language/app_localizations_setup.dart';
 
 class tele_store extends StatelessWidget {
@@ -17,12 +18,20 @@ class tele_store extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocProvider(
-      create: (context) => sl<AppCubitCubit>()
-        ..changeAppThemeMode(
-          sharedMode: SharedPref().getBoolean(prefKeys.themeMode),
-        )
-        ..getSavedLanguage(),
+    return MultiBlocProvider(
+      providers: [
+        BlocProvider(
+          create: (context) => sl<AppCubitCubit>()
+            ..changeAppThemeMode(
+              sharedMode: SharedPref().getBoolean(prefKeys.themeMode),
+            )
+            ..getSavedLanguage(),
+        ),
+        BlocProvider(
+          create: (context) => sl<FavouriteCubit>(),
+        ),
+      ],
+
       child: ValueListenableBuilder(
         valueListenable: ConnectivityController.instance.isconnected,
         builder: (_, value, __) {

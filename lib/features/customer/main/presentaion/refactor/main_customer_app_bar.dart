@@ -7,6 +7,7 @@ import 'package:tele_store/core/common/widgets/custom_linear_button.dart';
 import 'package:tele_store/core/common/widgets/custom_text.dart';
 import 'package:tele_store/core/enums/nav_bar_enum.dart';
 import 'package:tele_store/core/extentions/context_extension.dart';
+import 'package:tele_store/core/routes/app_routes.dart';
 import 'package:tele_store/core/style/fonts/font_weight_helper.dart';
 import 'package:tele_store/core/style/images/app_images.dart';
 import 'package:tele_store/features/customer/main/presentaion/cubit/main_cubit.dart';
@@ -42,7 +43,9 @@ class MainCustomerAppBar extends StatelessWidget
                 CustomFadeInLeft(
                   duration: 800,
                   child: CustomLinearButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      context.pushName(AppRoutes.searchScreen);
+                    },
                     child: Center(
                       child: SvgPicture.asset(AppImages.search),
                     ),

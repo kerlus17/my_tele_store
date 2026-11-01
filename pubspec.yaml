@@ -48,6 +48,8 @@ dependencies:
   webview_flutter: ^4.14.1
   package_info_plus: ^10.2.2
   carousel_slider: ^5.1.2
+  bloc_concurrency: ^0.3.0
+  equatable: ^3.0.0
 
 dev_dependencies:
   flutter_test:

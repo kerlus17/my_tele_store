@@ -125,4 +125,13 @@ abstract class ApiService {
   Future<GetAllProductResponse> getProductsViewAll(
     @Body() Map<String, dynamic> query,
   );
+
+
+
+  @POST(graphql)
+  Future<GetAllProductResponse> searchProducts(
+    @Body() Map<String, dynamic> query,
+  );
+
+
 }

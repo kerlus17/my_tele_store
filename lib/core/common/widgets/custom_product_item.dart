@@ -52,6 +52,7 @@ class CustomProductItem extends StatelessWidget {
                   child: CachedNetworkImage(
                     height: 200.h,
                     width: 120.w,
+                    
                     imageUrl: imgUrl.imageProductFormate(),
                     errorWidget: (context, url, error) => const Icon(
                       Icons.error,

@@ -4,15 +4,18 @@
 
 import 'package:hive_ce/hive_ce.dart';
 import 'package:tele_store/features/admin/add_notification/data/models/add_notification_model.dart';
+import 'package:tele_store/features/customer/favourite/data/model/add_favourite_model.dart';
 
 extension HiveRegistrar on HiveInterface {
   void registerAdapters() {
+    registerAdapter(AddFavouriteModelAdapter());
     registerAdapter(AddNotificationModelAdapter());
   }
 }
 
 extension IsolatedHiveRegistrar on IsolatedHiveInterface {
   void registerAdapters() {
+    registerAdapter(AddFavouriteModelAdapter());
     registerAdapter(AddNotificationModelAdapter());
   }
 }

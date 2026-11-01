@@ -17,7 +17,7 @@ class GetAllProductsBloc
   }
 
   final HomeRepo _repo;
-  bool isProductsLessThan10 = false;
+  bool isProductsLessThan10 = true;
 
   FutureOr<void> getProducts(
     FetchProductssEvent event,
@@ -26,7 +26,7 @@ class GetAllProductsBloc
     final result = await _repo.getAllProducts();
     result.when(
       success: (data) {
-        isProductsLessThan10 = data.productGetAllList.length <= 10;
+        isProductsLessThan10 = data.productGetAllList.length >= 10;
 
         if (data.productGetAllList.isEmpty) {
           emit(const GetAllProductsState.empty());

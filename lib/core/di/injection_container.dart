@@ -38,6 +38,7 @@ import 'package:tele_store/features/auth/presentation/bloc/bloc/auth_bloc.dart';
 import 'package:tele_store/features/customer/category/data/data_source/category_data_source.dart';
 import 'package:tele_store/features/customer/category/data/repo/category_repo.dart';
 import 'package:tele_store/features/customer/category/presentation/bloc/get_category/get_category_bloc.dart';
+import 'package:tele_store/features/customer/favourite/presentation/cubit/favourite/favourite_cubit.dart';
 import 'package:tele_store/features/customer/home/data/data_source/home_data_source.dart';
 import 'package:tele_store/features/customer/home/data/repo/home_repo.dart';
 import 'package:tele_store/features/customer/home/presentation/bloc/get_all_categories/get_all_categories_bloc.dart';
@@ -47,9 +48,15 @@ import 'package:tele_store/features/customer/main/presentaion/cubit/main_cubit.d
 import 'package:tele_store/features/customer/product_details/data/data_source/product_details_data_source.dart';
 import 'package:tele_store/features/customer/product_details/data/repo/product_details_repo.dart';
 import 'package:tele_store/features/customer/product_details/presentation/bloc/product_details/product_details_bloc.dart';
+import 'package:tele_store/features/customer/products_view_all/data/data_source/products_viewall_datasource.dart';
+import 'package:tele_store/features/customer/products_view_all/data/repo/products_view_all.dart';
+import 'package:tele_store/features/customer/products_view_all/presentation/bloc/products_view_all/products_view_all_bloc.dart';
 import 'package:tele_store/features/customer/profile/data/data_source/profile_data_source.dart';
 import 'package:tele_store/features/customer/profile/data/repo/profile_repo.dart';
 import 'package:tele_store/features/customer/profile/presentation/bloc/profile/profile_bloc.dart';
+import 'package:tele_store/features/customer/search/data/data_source/search_data_source.dart';
+import 'package:tele_store/features/customer/search/data/repo/search_repo.dart';
+import 'package:tele_store/features/customer/search/presentation/bloc/search/search_bloc.dart';
 
 final GetIt sl = GetIt.instance;
 
@@ -66,6 +73,9 @@ Future<void> setupInjection() async {
   await _initHome();
   await _initCategory();
   await _initProductDetails();
+  await _initProductsViewAll();
+  await _initSearch();
+  await _initFavourite();
 }
 
 Future<void> _initCore() async {
@@ -165,4 +175,22 @@ Future<void> _initCategory() async {
     ..registerFactory(() => GetCategoryBloc(sl()))
     ..registerLazySingleton(() => CatgeoryRepo(sl()))
     ..registerLazySingleton(() => CatgeoryDataSource(sl()));
+}
+
+Future<void> _initProductsViewAll() async {
+  sl
+    ..registerFactory(() => ProductsViewAllBloc(sl()))
+    ..registerLazySingleton(() => ProductsViewAllRepo(sl()))
+    ..registerLazySingleton(() => ProductsViewAllDataSource(sl()));
+}
+
+Future<void> _initSearch() async {
+  sl
+    ..registerFactory(() => SearchBloc(sl()))
+    ..registerLazySingleton(() => SearchRepo(sl()))
+    ..registerLazySingleton(() => SearchDataSource(sl()));
+}
+
+Future<void> _initFavourite() async {
+  sl.registerFactory(() => FavouriteCubit());
 }

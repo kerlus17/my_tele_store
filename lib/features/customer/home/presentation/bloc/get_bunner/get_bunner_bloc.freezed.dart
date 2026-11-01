@@ -455,7 +455,7 @@ String toString() {
 
 
 class SuccessState implements GetBunnerState {
-  const SuccessState({required   List<String> imageBannerList}): _imageBannerList = imageBannerList;
+  const SuccessState({required final  List<String> imageBannerList}): _imageBannerList = imageBannerList;
   
 
  final  List<String> _imageBannerList;

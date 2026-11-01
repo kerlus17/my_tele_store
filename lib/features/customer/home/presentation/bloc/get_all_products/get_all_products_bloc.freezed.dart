@@ -455,7 +455,7 @@ String toString() {
 
 
 class SuccessState implements GetAllProductsState {
-  const SuccessState({required   List<ProductGetAllModel> productsList}): _productsList = productsList;
+  const SuccessState({required final  List<ProductGetAllModel> productsList}): _productsList = productsList;
   
 
  final  List<ProductGetAllModel> _productsList;

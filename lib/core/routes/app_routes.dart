@@ -8,13 +8,13 @@ import 'package:tele_store/features/admin/home_admin/presentation/screens/home_a
 import 'package:tele_store/features/auth/presentation/bloc/bloc/auth_bloc.dart';
 import 'package:tele_store/features/auth/presentation/screens/login_screen.dart';
 import 'package:tele_store/features/auth/presentation/screens/signup_screen.dart';
-import 'package:tele_store/features/customer/categories/presentation/screen/categories_screen.dart';
 import 'package:tele_store/features/customer/category/presentation/screen/category_screen.dart';
 import 'package:tele_store/features/customer/main/presentaion/cubit/main_cubit.dart';
 import 'package:tele_store/features/customer/main/presentaion/screen/main_screen.dart';
 import 'package:tele_store/features/customer/product_details/presentation/screen/product_details_screen.dart';
 import 'package:tele_store/features/customer/products_view_all/presentation/screen/products_view_all_screen.dart';
 import 'package:tele_store/features/customer/profile/presentation/widgets/custom_web_view.dart';
+import 'package:tele_store/features/customer/search/presentation/screen/search_screen.dart';
 
 class AppRoutes {
   static const String login = 'login';
@@ -25,6 +25,7 @@ class AppRoutes {
   static const String Productdetails = 'ProductDetailsScreen';
   static const String category = 'category';
   static const String productsViewAll = 'productsViewAll';
+  static const String searchScreen = 'searchScreen';
 
   static Route<void> onGenerateRoute(RouteSettings settings) {
     final args = settings.arguments;
@@ -77,6 +78,10 @@ class AppRoutes {
       case productsViewAll:
         return BaseRoute(
           page: ProductsViewAllScreen(),
+        );
+      case searchScreen:
+        return BaseRoute(
+          page: SearchScreen(),
         );
 
       default:

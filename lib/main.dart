@@ -1,4 +1,5 @@
 import 'package:firebase_core/firebase_core.dart';
+import 'package:flutter/foundation.dart'; // مهم جداً للتحقق من الويب kIsWeb
 import 'package:flutter/services.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -25,13 +26,25 @@ void main() async {
 
   await setupInjection();
 
-  await SystemChrome.setPreferredOrientations([
-    DeviceOrientation.portraitDown,
-    DeviceOrientation.portraitUp,
-  ]);
+  // تدوير الشاشة يعمل على الهواتف فقط، ولا داعي له على المتصفح
+  if (!kIsWeb) {
+    await SystemChrome.setPreferredOrientations([
+      DeviceOrientation.portraitDown,
+      DeviceOrientation.portraitUp,
+    ]);
+  }
 
-  await FirebaseCloudMessaging.instance.init();
-  await HiveDatabase().setup();
+  // إشعارات الـ FCM تعمل بشكل أساسي على الموبايل (أو تحتاج تهيئة ويب خاصة)
+  if (!kIsWeb) {
+    await FirebaseCloudMessaging.instance.init();
+  }
+
+  // تهيئة Hive (لو ملف الـ setup لا يدعم الويب تلقائياً، يفضل عزله أو التأكد من إعداده)
+  try {
+    await HiveDatabase().setup();
+  } catch (e) {
+    print('Hive setup error on web: $e');
+  }
 
   runApp(const tele_store());
 }
