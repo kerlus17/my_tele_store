@@ -8,6 +8,7 @@ import 'package:tele_store/core/extentions/context_extension.dart';
 import 'package:tele_store/core/style/images/app_images.dart';
 import 'package:tele_store/features/customer/main/presentaion/cubit/main_cubit.dart';
 import 'package:tele_store/features/customer/main/presentaion/widgets/icon_tap_nav_bar.dart';
+import 'package:tele_store/features/customer/main/presentaion/widgets/notification_bar_icon.dart';
 
 class MainBottomNavBar extends StatelessWidget {
   const MainBottomNavBar({super.key});
@@ -53,17 +54,20 @@ class MainBottomNavBar extends StatelessWidget {
                                     isSelected:
                                         cubit.navBarEnum == NavBarEnum.home,
                                   ),
-                                  IconTapNavBar(
+
+                                  GestureDetector(
                                     onTap: () {
                                       cubit.selectedNavBarIcons(
-                                        NavBarEnum.categories,
+                                        NavBarEnum.notifications,
                                       );
                                     },
-                                    icon: AppImages.categoriesTab,
-                                    isSelected:
-                                        cubit.navBarEnum ==
-                                        NavBarEnum.categories,
+                                    child: NotificationBarIcon(
+                                      isSelected:
+                                          cubit.navBarEnum ==
+                                          NavBarEnum.notifications,
+                                    ),
                                   ),
+
                                   IconTapNavBar(
                                     onTap: () {
                                       cubit.selectedNavBarIcons(

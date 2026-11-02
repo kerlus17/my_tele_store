@@ -2,7 +2,7 @@ import 'package:dio/dio.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
 import 'package:googleapis_auth/auth_io.dart' as auth;
-
+import 'package:tele_store/core/serves/push_notifications/firebase_messaging_navigator.dart';
 
 class FirebaseCloudMessaging {
   FirebaseCloudMessaging._();
@@ -13,6 +13,21 @@ class FirebaseCloudMessaging {
 
   Future<void> init() async {
     await permisionNotification();
+
+    // forground
+    FirebaseMessaging.onMessage.listen(
+      FirebaseMessagingNavigate.forGroundHandler,
+    );
+
+    // terminated
+    await FirebaseMessaging.instance.getInitialMessage().then(
+      FirebaseMessagingNavigate.terminatedHandler,
+    );
+
+    // background
+    FirebaseMessaging.onMessageOpenedApp.listen(
+      FirebaseMessagingNavigate.backGroundHandler,
+    );
   }
 
   Future<void> controllerForUserSubscribe() async {

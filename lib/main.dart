@@ -8,6 +8,7 @@ import 'package:tele_store/core/app/env_variables.dart';
 import 'package:tele_store/core/di/injection_container.dart';
 import 'package:tele_store/core/serves/hive/hive_database.dart';
 import 'package:tele_store/core/serves/push_notifications/firebase_claud_messenging.dart';
+import 'package:tele_store/core/serves/push_notifications/local_notification.dart';
 import 'package:tele_store/core/serves/shared_pref/shared_pref.dart';
 import 'package:tele_store/core/utils/deep_links.dart';
 import 'package:tele_store/firebase_options.dart';
@@ -18,6 +19,10 @@ void main() async {
 
   await EnvVariable.instance.init(envType: EnvTypeEnum.dev);
 
+
+
+  
+
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
@@ -27,6 +32,8 @@ void main() async {
 
   await setupInjection();
   initDeepLinks();
+
+  await LocalNotificationService.init();
 
   if (!kIsWeb) {
     await SystemChrome.setPreferredOrientations([

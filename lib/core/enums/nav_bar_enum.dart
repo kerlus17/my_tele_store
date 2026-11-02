@@ -1,1 +1,1 @@
-enum NavBarEnum { home, categories, profile, favourite }
+enum NavBarEnum { home, notifications, profile, favourite }

@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:tele_store/core/di/injection_container.dart';
 import 'package:tele_store/core/enums/nav_bar_enum.dart';
+
 import 'package:tele_store/core/style/theme/assets_extension.dart';
-import 'package:tele_store/features/customer/categories/presentation/screen/categories_screen.dart';
 import 'package:tele_store/features/customer/favourite/presentation/screen/favourite_screen.dart';
 import 'package:tele_store/features/customer/home/presentation/screen/home_screen.dart';
 import 'package:tele_store/features/customer/main/presentaion/cubit/main_cubit.dart';
 import 'package:tele_store/features/customer/main/presentaion/refactor/main_bottom_nav_bar.dart';
 import 'package:tele_store/features/customer/main/presentaion/refactor/main_customer_app_bar.dart';
+import 'package:tele_store/features/customer/notifications/presentation/screen/notifications_screen.dart';
 import 'package:tele_store/features/customer/profile/presentation/screen/profile_screen.dart';
 
 class MainScreen extends StatelessWidget {
@@ -35,8 +35,8 @@ class MainScreen extends StatelessWidget {
                 builder: (context, state) {
                   final cubit = context.read<MainCubit>();
 
-                  if (cubit.navBarEnum == NavBarEnum.categories) {
-                    return const CategoriesScreen();
+                  if (cubit.navBarEnum == NavBarEnum.notifications) {
+                    return const NotificationsScreen();
                   } else if (cubit.navBarEnum == NavBarEnum.favourite) {
                     return const FavouriteScreen();
                   } else if (cubit.navBarEnum == NavBarEnum.profile) {

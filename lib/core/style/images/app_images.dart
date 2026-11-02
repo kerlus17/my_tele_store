@@ -31,6 +31,9 @@ class AppImages {   //Images
   static const buildDeveloper = 'assets/svg/build_developer.svg';
   static const logout = 'assets/svg/logout.svg';
   static const backButton = 'assets/svg/arrow_back.svg';
+  static const notification = 'assets/svg/notification_icon.svg';
+
+  static dynamic get notificationIcon => null;
 
 
 }
