@@ -106,45 +106,31 @@ class FirebaseCloudMessaging {
     required String productId,
   }) async {
     final accessToken = await _getAccessToken();
-    if (accessToken == null) {
-      debugPrint('Failed to obtain access token');
-      return;
-    }
+    if (accessToken == null) throw Exception('Failed to obtain access token');
 
-    final fcmToken = await FirebaseMessaging.instance.getToken();
-    debugPrint('FCM token: $fcmToken');
-    if (fcmToken == null) return;
-
-    const String projectId = "tele-5d291";
-    const String url =
+    const projectId = "tele-5d291";
+    const url =
         'https://fcm.googleapis.com/v1/projects/$projectId/messages:send';
 
-    try {
-      final response = await Dio().post(
-        url,
-        options: Options(
-          validateStatus: (_) => true,
-          contentType: Headers.jsonContentType,
-          headers: {"Authorization": "Bearer $accessToken"},
-        ),
-        data: {
-          "message": {
-            "topic": _SubscribeKey,
-            "notification": {
-              "title": title,
-              "body": body,
-            },
-            'data': {
-              'productId': productId,
-            },
-          },
+    final response = await Dio().post(
+      url,
+      options: Options(
+        validateStatus: (_) => true,
+        contentType: Headers.jsonContentType,
+        headers: {"Authorization": "Bearer $accessToken"},
+      ),
+      data: {
+        "message": {
+          "topic": _SubscribeKey,
+          "notification": {"title": title, "body": body},
+          "data": {"productId": productId},
         },
-      );
+      },
+    );
 
-      debugPrint('Response status: ${response.statusCode}');
-      debugPrint('Response data: ${response.data}');
-    } catch (e) {
-      debugPrint('Error sending notification: $e');
+    debugPrint('FCM ${response.statusCode}: ${response.data}');
+    if (response.statusCode != 200) {
+      throw Exception('FCM ${response.statusCode}: ${response.data}');
     }
   }
 }

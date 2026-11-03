@@ -30,6 +30,9 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
   FutureOr<void> login(LoginEvent event, Emitter<AuthState> emit) async {
     emit(const AuthState.loading());
 
+
+
+
     final result = await _repo.login(
       LoginRequestBody(
         email: emailController.text.trim(),
@@ -57,6 +60,8 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
           prefKeys.userRole,
           user.userRole ?? '',
         );
+
+        await _repo.addUserIdToFirebase(userId: user.userId.toString());
 
         emit(AuthState.success(userRole: user.userRole ?? ''));
       },

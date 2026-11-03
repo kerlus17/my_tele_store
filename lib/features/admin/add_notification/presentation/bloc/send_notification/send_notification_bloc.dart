@@ -20,20 +20,26 @@ class SendNotificationBloc
     Emitter<SendNotificationState> emit,
   ) async {
     emit(SendNotificationState.loading(indexId: event.indexId));
-
     final result = await _repo.sendNotifications(
       title: event.title,
       body: event.body,
       productId: event.productId,
     );
 
-    result.when(
-      success: (_) {
-        emit(const SendNotificationState.success());
+    await result.when(
+      success: (_) async {
+        try {
+          await _repo.addNotificationsToAllUsersFirebase(
+            body: event.body,
+            title: event.title,
+            productId: event.productId,
+          );
+          emit(const SendNotificationState.success());
+        } catch (e) {
+          emit(SendNotificationState.error(error: e.toString()));
+        }
       },
-      failure: (error) {
-        emit(SendNotificationState.error(error: error));
-      },
+      failure: (error) async => emit(SendNotificationState.error(error: error)),
     );
   }
 

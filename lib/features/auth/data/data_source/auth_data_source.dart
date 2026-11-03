@@ -1,12 +1,15 @@
 import 'package:dio/dio.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:tele_store/core/serves/graphql/api_service.dart';
 import 'package:tele_store/core/serves/graphql/qraphql_queries/aurh/auth_queries.dart';
+import 'package:tele_store/core/utils/app_strings.dart';
 import 'package:tele_store/features/auth/data/models/auth_login_response.dart';
 import 'package:tele_store/features/auth/data/models/login_request_body.dart';
 import 'package:tele_store/features/auth/data/models/sign_up_request.dart';
 import 'package:tele_store/features/auth/data/models/sign_up_response.dart';
 import 'package:tele_store/features/auth/data/models/user_role_response.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 
 class AuthDataSource {
   const AuthDataSource(this._graphql);
@@ -32,9 +35,6 @@ class AuthDataSource {
     return response;
   }
 
-
-
-
   Future<SignUpResponse> SignUp({required SignUpRequestBody body}) async {
     final response = await _graphql.signUp(
       AuthQueries().SignupMapQuery(body: body),
@@ -42,6 +42,10 @@ class AuthDataSource {
     return response;
   }
 
-
-
+  Future<void> addUserIdToFirebase({required String userId}) async {
+    await FirebaseFirestore.instance
+        .collection(usersCollection)
+        .doc(userId)
+        .set({});
+  }
 }
