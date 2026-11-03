@@ -14,42 +14,38 @@ class AddNotificationDataSource {
     final response = await FirebaseCloudMessaging.instance.sendNotification(
       body: body,
       title: title,
-      productId:productId.toString() ,
+      productId: productId.toString(),
     );
     return response;
   }
 
-
-
-
   Future<void> addNotificationsToAllUsersFirebase({
-  required String body,
-  required String title,
-  required int productId,
-}) async {
-  final notificationId = AppValues.randomStringId;
-  const createAt = '';
+    required String body,
+    required String title,
+    required int productId,
+  }) async {
+    final notificationId = AppValues.randomStringId;
+    const createAt = '';
 
-  final users = FirebaseFirestore.instance.collection(usersCollection);
+    final users = FirebaseFirestore.instance.collection(usersCollection);
 
-  final usersGet = await users.get();
+    final usersGet = await users.get();
 
-  for (final doc in usersGet.docs) {
-    await users
-        .doc(doc.id)
-        .collection(notificationCollection)
-        .doc(notificationId)
-        .set(
-          NotificationModel(
-            body: body,
-            title: title,
-            productId: productId,
-            isSeen: false,
-            createdAt: createAt.convertDataFormate(),
-            notificationId: notificationId,
-          ).toJson(),
-        );
+    for (final doc in usersGet.docs) {
+      await users
+          .doc(doc.id)
+          .collection(notificationCollection)
+          .doc(notificationId)
+          .set(
+            NotificationModel(
+              body: body,
+              title: title,
+              productId: productId,
+              isSeen: false,
+              createdAt: createAt.convertDataFormate(),
+              notificationId: notificationId,
+            ).toJson(),
+          );
+    }
   }
-}
-
 }

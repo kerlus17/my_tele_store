@@ -25,6 +25,8 @@ class NotificationBody extends StatelessWidget {
         }
 
         final notifications = asyncSnapshot.data!;
+
+        
         return Padding(
           padding: EdgeInsets.symmetric(horizontal: 10.w, vertical: 10.h),
           child: ListView.separated(
