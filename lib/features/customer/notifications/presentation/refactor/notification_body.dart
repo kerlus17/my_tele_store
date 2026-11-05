@@ -26,16 +26,19 @@ class NotificationBody extends StatelessWidget {
 
         final notifications = asyncSnapshot.data!;
 
-        
         return Padding(
           padding: EdgeInsets.symmetric(horizontal: 10.w, vertical: 10.h),
           child: ListView.separated(
             itemCount: notifications.length,
             itemBuilder: (context, index) {
               return NotificationItem(
-                title:notifications[index].title,
-                body: notifications[index].body ,
-                createdAt: notifications[index].createdAt ,
+                close: () {
+                  
+                },
+                productId: notifications[index].productId.toString(),
+                title: notifications[index].title,
+                body: notifications[index].body,
+                createdAt: notifications[index].createdAt,
               );
             },
             separatorBuilder: (context, index) => SizedBox(

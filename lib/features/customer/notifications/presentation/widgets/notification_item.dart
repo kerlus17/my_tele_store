@@ -4,26 +4,38 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:tele_store/core/common/widgets/custom_text.dart';
 import 'package:tele_store/core/extentions/context_extension.dart';
+import 'package:tele_store/core/routes/app_routes.dart';
 import 'package:tele_store/core/style/fonts/font_weight_helper.dart';
 import 'package:tele_store/core/style/images/app_images.dart';
 
 class NotificationItem extends StatelessWidget {
   const NotificationItem({
+    required this.close,
     required this.body,
     required this.createdAt,
     super.key,
     required this.title,
+    required this.productId,
   });
   final String title;
   final String body;
   final String createdAt;
+  final String productId;
+  final VoidCallback close;
 
   @override
   Widget build(BuildContext context) {
     return ListTile(
       contentPadding: EdgeInsets.zero,
       isThreeLine: true,
-      onTap: () {},
+      onTap: () {
+        if (int.parse(productId) != -1) {
+          context.pushName(
+            AppRoutes.Productdetails,
+            arguments: int.parse(productId),
+          );
+        }
+      },
       leading: Container(
         height: 50.h,
         width: 50.w,
@@ -81,7 +93,7 @@ class NotificationItem extends StatelessWidget {
         ],
       ),
       trailing: GestureDetector(
-        onTap: () {},
+        onTap: close,
         child: const Icon(
           Icons.close,
           color: Colors.yellow,

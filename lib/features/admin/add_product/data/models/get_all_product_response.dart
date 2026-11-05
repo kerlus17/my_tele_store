@@ -50,6 +50,8 @@ class ProductGetAllModel {
 
   factory ProductGetAllModel.fromJson(Map<String, dynamic> json) =>
       _$ProductGetAllModelFromJson(json);
+
+  Map<String, dynamic> toJson() => _$ProductGetAllModelToJson(this);
 }
 
 @JsonSerializable()

@@ -12,14 +12,20 @@ class CategoriesItem extends StatelessWidget {
     required this.id,
     required this.image,
     required this.title,
+    this.skew = -0.12,
     super.key,
   });
 
   final String image;
   final String title;
   final int id;
+  final double skew;
+
   @override
   Widget build(BuildContext context) {
+    final boxHeight = 71.h;
+    final boxWidth = 71.w;
+
     return GestureDetector(
       onTap: () {
         context.pushName(
@@ -29,33 +35,53 @@ class CategoriesItem extends StatelessWidget {
       },
       child: Column(
         children: [
-          CustomContainerLinearCustomer(
-            height: 71.h,
-            width: 71.w,
-            child: ClipRRect(
-              borderRadius: BorderRadius.circular(8),
-              child: CachedNetworkImage(
-                imageUrl: image,
-                fit: BoxFit.contain,
-                height: 71.h,
-                width: 71.w,
-                errorWidget: (context, url, error) => Container(
-                  decoration: BoxDecoration(
-                    color: Colors.grey[100],
-                    borderRadius: BorderRadius.circular(8),
-                  ),
-                  child: const Center(
-                    child: Icon(
-                      Icons.image_not_supported_outlined,
-                      color: Colors.grey,
-                      size: 24,
+          Padding(
+            padding: EdgeInsets.symmetric(vertical: 5.h),
+            child: SizedBox(
+              height: boxHeight,
+              width: boxWidth,
+              child: Stack(
+                children: [
+                  Positioned.fill(
+                    child: Transform(
+                      alignment: Alignment.center,
+                      transform: Matrix4.skewY(skew),
+                      child: CustomContainerLinearCustomer(
+                        height: boxHeight,
+                        width: boxWidth,
+                        child: const SizedBox.shrink(),
+                      ),
                     ),
                   ),
-                ),
+                  Padding(
+                    padding: EdgeInsets.all(6.r),
+                    child: ClipRRect(
+                      borderRadius: BorderRadius.circular(8),
+                      child: CachedNetworkImage(
+                        imageUrl: image,
+                        fit: BoxFit.contain,
+                        height: boxHeight,
+                        width: boxWidth,
+                        errorWidget: (context, url, error) => Container(
+                          decoration: BoxDecoration(
+                            color: Colors.grey[100],
+                            borderRadius: BorderRadius.circular(8),
+                          ),
+                          child: const Center(
+                            child: Icon(
+                              Icons.image_not_supported_outlined,
+                              color: Colors.grey,
+                              size: 24,
+                            ),
+                          ),
+                        ),
+                      ),
+                    ),
+                  ),
+                ],
               ),
             ),
           ),
-          SizedBox(height: 10.h),
           SizedBox(
             height: 35.h,
             width: 75.w,

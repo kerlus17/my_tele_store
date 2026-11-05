@@ -12,6 +12,7 @@ import 'package:tele_store/features/customer/home/presentation/bloc/get_bunner/g
 import 'package:tele_store/features/customer/home/presentation/widgets/banner/banner_slider.dart';
 import 'package:tele_store/features/customer/home/presentation/widgets/categories/categories_list.dart';
 import 'package:tele_store/features/customer/home/presentation/widgets/categories/categories_shimmer.dart';
+import 'package:tele_store/features/customer/home/presentation/widgets/products/products_himmer.dart';
 import 'package:tele_store/features/customer/home/presentation/widgets/products/products_list.dart';
 import 'package:tele_store/language/lang_keys.dart';
 
@@ -84,7 +85,7 @@ class HomeBody extends StatelessWidget {
               builder: (context, state) {
                 return state.when(
                   loading: () {
-                    return CategoriesShimmer();
+                    return ProductShimmer();
                   },
                   success: (success) {
                     return ProductsList(

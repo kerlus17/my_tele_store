@@ -16,9 +16,6 @@ import 'package:tele_store/language/app_localizations_setup.dart';
 class tele_store extends StatelessWidget {
   const tele_store({super.key});
 
-
-
-
   @override
   Widget build(BuildContext context) {
     return MultiBlocProvider(
@@ -74,19 +71,9 @@ class tele_store extends StatelessWidget {
                         ),
                       );
                     },
-                    home: Scaffold(
-                      appBar: AppBar(
-                        title: const Text('tele store'),
-                      ),
-                    ),
                     navigatorKey: sl<GlobalKey<NavigatorState>>(),
                     onGenerateRoute: AppRoutes.onGenerateRoute,
-                    initialRoute:
-                        SharedPref().getString(prefKeys.accessToken) != null
-                        ? SharedPref().getString(prefKeys.userRole) == 'admin'
-                              ? AppRoutes.homeAdmin
-                              : AppRoutes.homeCustomer
-                        : AppRoutes.login,
+                    initialRoute: AppRoutes.splash,
                   );
                 },
               ),

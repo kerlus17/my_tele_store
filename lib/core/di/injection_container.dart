@@ -35,6 +35,9 @@ import 'package:tele_store/features/admin/users/presentation/bloc/get_all_users/
 import 'package:tele_store/features/auth/data/data_source/auth_data_source.dart';
 import 'package:tele_store/features/auth/data/repos/auth_repos.dart';
 import 'package:tele_store/features/auth/presentation/bloc/bloc/auth_bloc.dart';
+import 'package:tele_store/features/customer/cart/data/data_source/cart_data_source.dart';
+import 'package:tele_store/features/customer/cart/data/repo/cart_repo.dart';
+import 'package:tele_store/features/customer/cart/presentaion/bloc/add_product_to_cart/add_product_to_cart_bloc.dart';
 import 'package:tele_store/features/customer/category/data/data_source/category_data_source.dart';
 import 'package:tele_store/features/customer/category/data/repo/category_repo.dart';
 import 'package:tele_store/features/customer/category/presentation/bloc/get_category/get_category_bloc.dart';
@@ -76,6 +79,7 @@ Future<void> setupInjection() async {
   await _initProductsViewAll();
   await _initSearch();
   await _initFavourite();
+  await _initAddProductToCartRepo();
 }
 
 Future<void> _initCore() async {
@@ -193,4 +197,16 @@ Future<void> _initSearch() async {
 
 Future<void> _initFavourite() async {
   sl.registerFactory(() => FavouriteCubit());
+}
+
+
+
+
+
+
+Future<void> _initAddProductToCartRepo() async {
+  sl
+    ..registerFactory(() => AddProductToCartBloc(sl()))
+    ..registerLazySingleton(() => cartRepo(sl()))
+    ..registerLazySingleton(() => CartDataSource(sl()));
 }

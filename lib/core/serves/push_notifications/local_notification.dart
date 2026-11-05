@@ -22,7 +22,6 @@ class LocalNotificationService {
   }
 
   static void onTap(NotificationResponse notificationResponse) {
-    // navigator
     if (int.parse(notificationResponse.payload.toString()) != -1) {
       sl<GlobalKey<NavigatorState>>().currentState!.context.pushName(
         AppRoutes.Productdetails,

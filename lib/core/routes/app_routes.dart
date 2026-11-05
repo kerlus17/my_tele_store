@@ -15,6 +15,7 @@ import 'package:tele_store/features/customer/product_details/presentation/screen
 import 'package:tele_store/features/customer/products_view_all/presentation/screen/products_view_all_screen.dart';
 import 'package:tele_store/features/customer/profile/presentation/widgets/custom_web_view.dart';
 import 'package:tele_store/features/customer/search/presentation/screen/search_screen.dart';
+import 'package:tele_store/features/splash_view.dart';
 
 class AppRoutes {
   static const String login = 'login';
@@ -26,10 +27,14 @@ class AppRoutes {
   static const String category = 'category';
   static const String productsViewAll = 'productsViewAll';
   static const String searchScreen = 'searchScreen';
+  static const String splash = 'splash';
 
   static Route<void> onGenerateRoute(RouteSettings settings) {
     final args = settings.arguments;
     switch (settings.name) {
+      case splash:
+        return BaseRoute(page: const SplashView());
+
       case login:
         return BaseRoute(
           page: BlocProvider(
