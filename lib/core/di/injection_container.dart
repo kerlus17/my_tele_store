@@ -48,6 +48,7 @@ import 'package:tele_store/features/customer/home/presentation/bloc/get_all_cate
 import 'package:tele_store/features/customer/home/presentation/bloc/get_all_products/get_all_products_bloc.dart';
 import 'package:tele_store/features/customer/home/presentation/bloc/get_bunner/get_bunner_bloc.dart';
 import 'package:tele_store/features/customer/main/presentaion/cubit/main_cubit.dart';
+import 'package:tele_store/features/customer/notifications/presentation/bloc/mark_as_read/mark_as_read_bloc.dart';
 import 'package:tele_store/features/customer/product_details/data/data_source/product_details_data_source.dart';
 import 'package:tele_store/features/customer/product_details/data/repo/product_details_repo.dart';
 import 'package:tele_store/features/customer/product_details/presentation/bloc/product_details/product_details_bloc.dart';
@@ -80,6 +81,7 @@ Future<void> setupInjection() async {
   await _initSearch();
   await _initFavourite();
   await _initAddProductToCartRepo();
+  await _initMarkAll();
 }
 
 Future<void> _initCore() async {
@@ -199,14 +201,13 @@ Future<void> _initFavourite() async {
   sl.registerFactory(() => FavouriteCubit());
 }
 
-
-
-
-
-
 Future<void> _initAddProductToCartRepo() async {
   sl
     ..registerFactory(() => AddProductToCartBloc(sl()))
     ..registerLazySingleton(() => cartRepo(sl()))
     ..registerLazySingleton(() => CartDataSource(sl()));
+}
+
+Future<void> _initMarkAll() async {
+  sl.registerFactory(() => MarkAsReadBloc());
 }

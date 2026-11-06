@@ -32,9 +32,8 @@ class NotificationBody extends StatelessWidget {
             itemCount: notifications.length,
             itemBuilder: (context, index) {
               return NotificationItem(
-                close: () {
-                  
-                },
+                isRead: notifications[index].isSeen,
+                close: () {},
                 productId: notifications[index].productId.toString(),
                 title: notifications[index].title,
                 body: notifications[index].body,

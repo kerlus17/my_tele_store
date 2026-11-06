@@ -5,12 +5,15 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:tele_store/core/common/animation/animate_do.dart';
 import 'package:tele_store/core/common/widgets/custom_linear_button.dart';
 import 'package:tele_store/core/common/widgets/custom_text.dart';
+import 'package:tele_store/core/di/injection_container.dart';
 import 'package:tele_store/core/enums/nav_bar_enum.dart';
 import 'package:tele_store/core/extentions/context_extension.dart';
 import 'package:tele_store/core/routes/app_routes.dart';
 import 'package:tele_store/core/style/fonts/font_weight_helper.dart';
 import 'package:tele_store/core/style/images/app_images.dart';
 import 'package:tele_store/features/customer/main/presentaion/cubit/main_cubit.dart';
+import 'package:tele_store/features/customer/notifications/presentation/bloc/mark_as_read/mark_as_read_bloc.dart';
+import 'package:tele_store/features/customer/notifications/presentation/widgets/mark_as_read.dart';
 import 'package:tele_store/language/lang_keys.dart';
 
 class MainCustomerAppBar extends StatelessWidget
@@ -69,11 +72,11 @@ class MainCustomerAppBar extends StatelessWidget
               ),
             ); // CustomFadeInRight
           } else if (cubit.navBarEnum == NavBarEnum.notifications) {
-            return Center(
-              child: CustomFadeInRight(
-                duration: 800,
-                child: Center(
-                  child: TextApp(
+            return CustomFadeInUp(
+              duration: 800,
+              child: Row(
+                children: [
+                  TextApp(
                     text: 'Your Notifications',
                     theme: context.textStyle.copyWith(
                       fontSize: 20.sp,
@@ -81,8 +84,12 @@ class MainCustomerAppBar extends StatelessWidget
                       color: context.color.textColor,
                     ),
                   ),
-                ), // TextApp
-              ),
+                  BlocProvider(
+                    create: (context) => sl<MarkAsReadBloc>(),
+                    child: MarkAsRead(),
+                  ),
+                ],
+              ), // TextApp
             ); // CustomFadeInRight
           } else {
             return SizedBox.shrink();
